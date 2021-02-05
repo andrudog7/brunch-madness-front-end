@@ -86,6 +86,17 @@
     float: left;
     text-align: center;
     margin: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 15px;
+    font-size: 50px;
  }
+
+ #bar-title {
+     font-size: 50px;
+     margin-top: 35px;
+ }
+
+ #register-title {
+    font-size: 25px;
+    margin-top: 10px;
+}
