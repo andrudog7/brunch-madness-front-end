@@ -50,5 +50,6 @@ function createUserScores(userInfo) {
     })
     userInfoDiv.append(ol)
     userInfoDiv.append(playBtn)
+    playBtn.addEventListener('click', startGame)
 }
 }
