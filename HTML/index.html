@@ -14,13 +14,15 @@
 <body>
     
     <div class="root">
-        <div class="sidebar">
+        <div id="sidebar">
         <h1 id="game-title">BRUNCH MADNESS</h1>
-        <form style="text-align:center">
+        <div id="user-info">
+        <form id="login-form" style="text-align:center">
             <label for="username">Enter your Username:</label><br>
             <input type="text" id="username" name="username"><br><br>
-            <input type="submit" value="Enter">
+            <input type="submit" value="Enter" id="submit-btn">
         </form>
+        </div>
         </div>
         <div class="body-text">
             <section class ="restaurant">
@@ -74,5 +76,6 @@
 <script src="../Javascript/application.js"></script>
 <script src="../Javascript/customer.js"></script>
 <script src="../Javascript/item.js"></script>
+<script src="../Javascript/user.js"></script>
 
 </html>

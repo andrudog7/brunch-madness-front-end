@@ -3,7 +3,7 @@
     text-align: center;
 }
 
-.sidebar {
+#sidebar {
     height: 800px;
     width: 15%;
     position: absolute;
@@ -13,7 +13,7 @@
     border: 1px solid black;
     }
     
-.sidebar div {
+#sidebar div {
     padding: 8px;
     font-size: 24px;
     display: block;
@@ -100,3 +100,22 @@
     font-size: 25px;
     margin-top: 10px;
 }
+
+#user-info ol {
+    font-size: 16px;
+    padding: 8px;
+    margin-left: 31px;
+}
+
+#login-form {
+    font-size: 16px;
+}
+
+  #user-info h3 {
+      margin: 10px;
+  }
+
+  #user-info {
+      justify-content: center;
+      align-items: center;
+  }
