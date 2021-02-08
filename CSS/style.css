@@ -47,7 +47,7 @@
 
 .seating-1, .seating-2 {
     width: 1050px;
-    height: 350px;
+    height: 300px;
     left: 0;
     right: 0;
     top: 0;
@@ -61,7 +61,7 @@
 
  #table-1, #table-2, #table-3, #table-4, #table-5, #table-6, #table-7, #table-8 {
     width: 22%;
-    height: 350px;
+    height: 300px;
     left: 0;
     right: 0;
     top: 0;
@@ -70,9 +70,11 @@
     margin: 2px;
  }
 
- p {
+ .seating-1 p, .seating-2 p {
      display: inline-block;
      font-size: 30px;
+     margin-top: 0px;
+     margin-bottom: 5px;
  }
  
  h4 {

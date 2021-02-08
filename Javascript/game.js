@@ -7,6 +7,8 @@ function startGame(e) {
     gameHeader.style.textAlign = "center"
     
     const gameDuration = document.createElement("p")
+    const gameTips = document.createElement("p")
+    const gameTablesServed = document.createElement("p")
     const timerMilisec = document.createElement("span")
     timerMilisec.id = "milisec"
     timerMilisec.innerText = "00"
@@ -26,6 +28,17 @@ function startGame(e) {
     userArea.appendChild(gameHeader)
     userArea.appendChild(gameDuration)
     startTimer()
+    gameTips.id = "tipCount"
+    gameTablesServed.id = "tableCount"
+    gameTips.style.margin = "5px"
+    gameTablesServed.margin = "5px"
+    gameTips.style.fontSize = "28px"
+    gameTablesServed.style.fontSize = "28px"
+    gameTips.style.textAlign = "center"
+    gameTablesServed.style.textAlign = "center"
+    gameTips.innerText = `Tips: $ tip variable`
+    gameTablesServed.innerText = `Tables Served: table variable`
+    userArea.appendChild(gameTips).appendChild(gameTablesServed)
 }
 
 let x
