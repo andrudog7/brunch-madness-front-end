@@ -105,7 +105,7 @@ let TABLES = [1, 2, 3, 4, 5, 6, 7, 8]
 let currentTables = []
 
 function selectTable() {
-    let table = TABLES[Math.floor(Math.random() * TABLES.length)]
+    let table = Math.floor(Math.random() * 8)
     currentTables = TABLES.splice((table), 1)
     const tableText = document.getElementById(`table-${table + 1}`).children[0]
     customer = selectCustomer()
@@ -131,5 +131,13 @@ function customerOrder(table, customer) {
 }
 
 function displayOrder(order) {
-    console.log(order)
+    Swal.fire(`${Customer.all.find(e => e.id === order.customer).name}'s Order`,
+    `${printOrderContent(order)}`)
+}
+
+function printOrderContent(order) {
+    string = ""
+    for(i = 0; i < order.displayItems().length; i ++) {
+        string += ((order.displayItems()[i] + "<br>"))}
+    return string
 }
