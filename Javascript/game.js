@@ -17,18 +17,28 @@ function startGame(e) {
     timerMinute.id = "min"
     timerMinute.innerText = "00:"
     gameDuration.innerText = "Time: "
+    gameDuration.style.fontSize = "28px"
+    gameDuration.style.textAlign = "center"
+    gameDuration.style.marginLeft = "13px"
     gameDuration.append(timerMinute)
     gameDuration.append(timerSec)
     gameDuration.append(timerMilisec)
     userArea.appendChild(gameHeader)
     userArea.appendChild(gameDuration)
+    startTimer()
 }
+
+let x
 
 function startTimer() {
     x = setInterval(timer, 10);
   } /* Start */
 
-function timer() {
+  function stop() {
+    clearInterval(x);
+  } /* Stop */
+
+
     let milisec = 0;
     let sec = 0; /* holds incrementing value */
     let min = 0;
@@ -41,7 +51,7 @@ function timer() {
 
 /* Output variable End */
   /* Main Timer */
-
+function timer() {
   miliSecOut = checkTime(milisec);
   secOut = checkTime(sec);
   minOut = checkTime(min);
@@ -59,8 +69,8 @@ function timer() {
   }
 
   document.getElementById("milisec").innerHTML = miliSecOut;
-  document.getElementById("sec").innerHTML = secOut;
-  document.getElementById("min").innerHTML = minOut;
+  document.getElementById("sec").innerHTML = secOut + ":";
+  document.getElementById("min").innerHTML = minOut + ":";
 }
 
 /* Adds 0 when value is <10 */
