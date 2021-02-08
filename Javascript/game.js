@@ -28,6 +28,7 @@ function startGame(e) {
     userArea.appendChild(gameHeader)
     userArea.appendChild(gameDuration)
     startTimer()
+    selectTable()
     gameTips.id = "tipCount"
     gameTablesServed.id = "tableCount"
     gameTips.style.margin = "5px"
@@ -40,30 +41,25 @@ function startGame(e) {
     gameTablesServed.innerText = `Tables Served: table variable`
     userArea.appendChild(gameTips).appendChild(gameTablesServed)
 }
-
+// Timer Function
 let x
 
 function startTimer() {
     x = setInterval(timer, 10);
-  } /* Start */
+  } 
 
   function stop() {
     clearInterval(x);
-  } /* Stop */
-
+  }
 
     let milisec = 0;
-    let sec = 0; /* holds incrementing value */
+    let sec = 0; 
     let min = 0;
-
-/* Contains and outputs returned value of  function checkTime */
 
     let miliSecOut = 0;
     let secOut = 0;
     let minOut = 0;
 
-/* Output variable End */
-  /* Main Timer */
 function timer() {
   miliSecOut = checkTime(milisec);
   secOut = checkTime(sec);
@@ -86,8 +82,6 @@ function timer() {
   document.getElementById("min").innerHTML = minOut + ":";
 }
 
-/* Adds 0 when value is <10 */
-
 function checkTime(i) {
   if (i < 10) {
     i = "0" + i;
@@ -97,9 +91,6 @@ function checkTime(i) {
 
 function reset() {
 
-
-  /*Reset*/
-
   milisec = 0;
   sec = 0;
   min = 0
@@ -108,4 +99,37 @@ function reset() {
   document.getElementById("sec").innerHTML = "00";
   document.getElementById("min").innerHTML = "00";
 
+}
+
+let TABLES = [1, 2, 3, 4, 5, 6, 7, 8]
+let currentTables = []
+
+function selectTable() {
+    let table = TABLES[Math.floor(Math.random() * TABLES.length)]
+    currentTables = TABLES.splice((table), 1)
+    const tableText = document.getElementById(`table-${table + 1}`).children[0]
+    customer = selectCustomer()
+    tableText.innerText = customer.name
+    customerOrder(table, customer)
+}
+
+function selectCustomer() {
+    let customer = Customer.all[Math.floor(Math.random() * 16)]
+    return customer
+}
+
+function customerOrder(table, customer) {
+    numberOfItems = Math.floor(Math.random() * 6)
+    let order = new Order(table = (table + 1), customer = customer)
+    for (i = 0; i <= numberOfItems; i++) {
+        order.items.push(Item.all[Math.floor(Math.random() * 9)])
+    }
+    let tableContent = document.getElementById(`table-${table}-content`).firstChild
+    setTimeout(function() {
+        tableContent.innerText = "‼️"}, 2500)
+    tableContent.addEventListener('click', displayOrder.bind(null, order))
+}
+
+function displayOrder(order) {
+    console.log(order)
 }

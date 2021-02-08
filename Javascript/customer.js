@@ -15,6 +15,6 @@ function fetchCustomers(){
 
 function loadCustomerData(customersArray) {
     customersArray.forEach(customer => {
-        new Customer(customer)
+        new Customer( name = customer.name, id = customer.id)
     })
 }
