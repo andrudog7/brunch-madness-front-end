@@ -121,3 +121,11 @@
       justify-content: center;
       align-items: center;
   }
+
+  #waiter {
+    width:70px;
+    height:90px;
+    bottom: 30px;
+    left: 0px;
+    position: relative;
+  }
