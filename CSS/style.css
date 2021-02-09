@@ -91,6 +91,18 @@
     margin-top: 20px;
     margin-left: 15px;
     font-size: 50px;
+    border: 5px solid black;
+    position: relative;
+ }
+
+ .bar:after {
+     position: absolute;
+     border: 5px solid white;
+     height: 100px;
+     display: block;
+     content: "";
+     left: 100px;
+     top: 115px;
  }
 
  #bar-title {

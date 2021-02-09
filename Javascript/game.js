@@ -127,7 +127,7 @@ function customerOrder(table, customer) {
     let tableContent = document.getElementById(`table-${table}-content`).firstChild
     setTimeout(function() {
         tableContent.innerText = "‼️"}, 2500)
-    tableContent.addEventListener('click', displayOrder.bind(null, order))
+    // tableContent.addEventListener('click', displayOrder.bind(null, order))
 }
 
 function displayOrder(order) {
@@ -136,7 +136,7 @@ function displayOrder(order) {
 }
 
 function printOrderContent(order) {
-    string = ""
+    let string = ""
     for(i = 0; i < order.displayItems().length; i ++) {
         string += ((order.displayItems()[i] + "<br>"))}
     return string

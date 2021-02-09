@@ -7,6 +7,16 @@ class Item {
         Item.all.push(this)
     }
     static all = []
+
+    static displayItemForm() {
+        let itemHTML = "<form>"
+        Item.all.forEach(item => {
+            itemHTML += `<label for="${item.name}"style="width:200px;display:inline-block;padding:2px">${item.name}:</label><input type="text", id="${item.name}"><br>`
+        })
+        itemHTML += `<label for="table"style="width:200px;display:inline-block;padding:8px">To Table Number:</label><input type="text", id="table">`
+        itemHTML += "</form>"
+        return itemHTML
+    }
 }
 
 function fetchItems(){
