@@ -2,6 +2,9 @@ function startGame(e) {
     let userArea = e.target.parentElement
     e.target.style.display = "none"
 
+    const gameDisplay = document.querySelector('.restaurant')
+    gameDisplay.style.display = "inline-block"
+
     const gameHeader = document.createElement("h4")
     gameHeader.innerText = "Current Game"
     gameHeader.style.textAlign = "center"
@@ -29,6 +32,7 @@ function startGame(e) {
     userArea.appendChild(gameDuration)
     startTimer()
     selectTable()
+    setInterval(selectTable, 20000)
     gameTips.id = "tipCount"
     gameTablesServed.id = "tableCount"
     gameTips.style.margin = "5px"
@@ -105,12 +109,15 @@ let TABLES = [1, 2, 3, 4, 5, 6, 7, 8]
 let currentTables = []
 
 function selectTable() {
-    let table = Math.floor(Math.random() * 8)
-    currentTables = TABLES.splice((table), 1)
-    const tableText = document.getElementById(`table-${table + 1}`).children[0]
+    let randomNum = Math.floor(Math.random() * TABLES.length)
+    table = TABLES[randomNum]
+    TABLES.splice(randomNum, 1)
+    const tableText = document.getElementById(`table-${table}`).children[0]
     customer = selectCustomer()
     tableText.innerText = customer.name
     customerOrder(table, customer)
+    console.log(TABLES)
+    console.log(table)
 }
 
 function selectCustomer() {
@@ -120,14 +127,13 @@ function selectCustomer() {
 
 function customerOrder(table, customer) {
     numberOfItems = Math.floor(Math.random() * 6)
-    let order = new Order(table = (table + 1), customer = customer)
+    let order = new Order(table = table, customer = customer)
     for (i = 0; i <= numberOfItems; i++) {
         order.items.push(Item.all[Math.floor(Math.random() * 9)])
     }
     let tableContent = document.getElementById(`table-${table}-content`).firstChild
     setTimeout(function() {
         tableContent.innerText = "‼️"}, 2500)
-    // tableContent.addEventListener('click', displayOrder.bind(null, order))
 }
 
 function displayOrder(order) {

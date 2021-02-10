@@ -7,15 +7,6 @@ class Order {
         Order.all.push(this)
     }
     displayItems() {
-        // let names = this.items.reduce(function (acc, item) {
-        //     if (typeof acc[item.name] === 'undefined') {
-        //       acc[item.name] = 1;
-        //     } else {
-        //       acc[item.name] += 1;
-        //     }
-          
-        //     return acc;
-        //   }, {});
         let uniqNames = [...new Set(this.items)]
         let displayOrderContent = ""
         uniqNames.forEach(item => {
