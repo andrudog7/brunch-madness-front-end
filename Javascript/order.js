@@ -15,5 +15,9 @@ class Order {
         })
           return displayOrderContent.split(",").splice(0, displayOrderContent.split(",").length - 1)
     }
+    static tableLastOrder(table) {
+        let tableOrders1 = Order.all.filter(e => e.table === table)
+        return tableOrders1[tableOrders1.length - 1]
+    }
     static all = []
 }

@@ -86,36 +86,28 @@ function moveWaiter(e) {
     let tableContent7 = document.getElementById(`table-7-content`).firstChild
     let tableContent8 = document.getElementById(`table-8-content`).firstChild
       if (tableContent1.innerText === "‼️" && (WAITER.style.left === "-360px") && (WAITER.style.bottom === "170px")) {
-        order = Order.all.find(order => order.table === 1)
-        displayOrder(order)
+        displayOrder(Order.tableLastOrder(1))
       }
       if (tableContent2.innerText === "‼️" && WAITER.style.left === "-120px" && WAITER.style.bottom === "170px") {
-        order = Order.all.find(order => order.table === 2)
-        displayOrder(order)
+        displayOrder(Order.tableLastOrder(2))
       }
       if (tableContent3.innerText === "‼️" && WAITER.style.left === "120px" && WAITER.style.bottom === "170px") {
-        order = Order.all.find(order => order.table === 3)
-        displayOrder(order)
+        displayOrder(Order.tableLastOrder(3))
       }
       if (tableContent4.innerText === "‼️" && WAITER.style.left === "360px" && WAITER.style.bottom === "170px") {
-        order = Order.all.find(order => order.table === 4)
-        displayOrder(order)
+        displayOrder(Order.tableLastOrder(4))
       }
-      if (tableContent5.innerText === "‼️" && WAITER.style.left === "-360px" && WAITER.style.bottom === "-170px") {
-        order = Order.all.find(order => order.table === 5)
-        displayOrder(order)
+      if (tableContent5.innerText === "‼️" && WAITER.style.left === "-360px" && WAITER.style.bottom === "-150px") {
+        displayOrder(Order.tableLastOrder(5))
       }
-      if (tableContent6.innerText === "‼️" && WAITER.style.left === "-120px" && WAITER.style.bottom === "-170px") {
-        order = Order.all.find(order => order.table === 6)
-        displayOrder(order)
+      if (tableContent6.innerText === "‼️" && WAITER.style.left === "-120px" && WAITER.style.bottom === "-150px") {
+        displayOrder(Order.tableLastOrder(6))
       }
-      if (tableContent7.innerText === "‼️" && WAITER.style.left === "120px" && WAITER.style.bottom === "-170px") {
-        order = Order.all.find(order => order.table === 7)
-        displayOrder(order)
+      if (tableContent7.innerText === "‼️" && WAITER.style.left === "120px" && WAITER.style.bottom === "-150px") {
+        displayOrder(Order.tableLastOrder(7))
       }
-      if (tableContent8.innerText === "‼️" && WAITER.style.left === "360px" && WAITER.style.bottom === "-170px") {
-        order = Order.all.find(order => order.table === 8)
-        displayOrder(order)
+      if (tableContent8.innerText === "‼️" && WAITER.style.left === "360px" && WAITER.style.bottom === "-150px") {
+        displayOrder(Order.tableLastOrder(8))
       }
   }
 
@@ -168,11 +160,18 @@ function moveWaiter(e) {
                 let secondItems = barOrderItems.sort(function (a, b) {
                     return a.id - b.id;
                   })
-                for (let i=0;i<firstItems.length;i++) {
-                    if (firstItems[i] !== secondItems[i]) {
+                  let compareArray = []
+                  firstItems.forEach((item, index) => {
+                      if (item === secondItems[index]) {
+                          compareArray.push("true")
+                      } 
+                      if (item !== secondItems[index]) {
+                          compareArray.push("false")
+                      }
+                      })
+                      if (compareArray.find(e => e === "false")) {
                         Swal.fire("Ouch! You got the order wrong!")
-                    } 
-                    if (firstItems[i] === secondItems[i]) {
+                      } else {
                         Swal.fire("Order Fulfilled!")
                         let tableOrderFilled = document.getElementById(`table-${thisTableOrder.table}-content`).firstChild
                         let emojiOrder = ""
@@ -181,23 +180,23 @@ function moveWaiter(e) {
                         } else {
                         thisTableOrder.items.forEach(item => emojiOrder += `${item.icon}`)
                         tableOrderFilled.innerText = emojiOrder
-                    }
-                    totalTables = 0
-                    let tablesServed
-                    tablesServed = document.getElementById('tableCount')
-                    tablesServed.innerText = `Tables Served: ${totalTables+=1}`
-                    setTimeout(removeOrder.bind(null, tableOrderFilled, thisTable, thisTableOrder), Math.ceil(Math.random() * 50000))
-                    }
+                        let tablesServed
+                        tablesServed = document.getElementById('tableCount')
+                        tablesServed.innerText = `Tables Served: ${totalTables+=1}`
+                      }
+                      setTimeout(removeOrder.bind(null, tableOrderFilled, thisTable, thisTableOrder), Math.ceil(Math.random() * 50000))
+                      compareArray = []
+                  }
                 }
             }
           }
    }
-  }
+  
+  let totalTables = 0
 
   function removeOrder(tableOrderFilled, thisTable, thisTableOrder) {
     tableOrderFilled.innerText = `#${thisTable}`
     TABLES.push(thisTable)
     Table.all.find(table => table.number === thisTable).orders.push(thisTableOrder)
-    debugger
 }
   

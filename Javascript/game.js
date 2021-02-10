@@ -42,7 +42,7 @@ function startGame(e) {
     gameTips.style.textAlign = "center"
     gameTablesServed.style.textAlign = "center"
     gameTips.innerText = `Tips: $ tip variable`
-    gameTablesServed.innerText = `Tables Served: table variable`
+    gameTablesServed.innerText = `Tables Served: 0`
     userArea.appendChild(gameTips).appendChild(gameTablesServed)
 }
 // Timer Function
@@ -114,12 +114,13 @@ function selectTable() {
     TABLES.splice(randomNum, 1)
     const tableText = document.getElementById(`table-${table}`).children[0]
     if (tableText.innerText === "") {
-        customer = selectCustomer()
-        tableText.innerText = customer.name
+        newCustomer = selectCustomer()
+        tableText.innerText = newCustomer.name
+        customerOrder(table, newCustomer)
+    } else {
+        let customer1 = Customer.all.find(e => e.name === tableText.innerText)
+        customerOrder(table, customer1)
     }
-    customerOrder(table, customer)
-    console.log(TABLES)
-    console.log(table)
 }
 
 function selectCustomer() {
