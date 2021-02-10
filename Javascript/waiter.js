@@ -150,36 +150,34 @@ function moveWaiter(e) {
             }
           })
           if (formValues) {
-              let tableOrder = Order.all.find(order => order.table === parseInt(formValues[9]), 10)
-              let tableCustomer = Customer.all.find(e => e.id === tableOrder.customer)
-              let newBarOrder = new Order(table = parseInt(formValues[9].charAt(0), 10), customer = tableCustomer)
-             
+              let barOrderItems = []
               for (i=0;i<formValues.length - 1;i++) {
                 if (formValues[i].charAt(0) !== "S") {
                     for (t=0;t<parseInt(formValues[i].charAt(0), 10);t++) {
-                newBarOrder.items.push(Item.all.find(e => e.name === formValues[i].slice(1)))
+                barOrderItems.push(Item.all.find(e => e.name === formValues[i].slice(1)))
                 }
             }
             }
-            let tableOrders = Order.all.filter(order => order.table === newBarOrder.table)
-            if (tableOrders[0].table === tableOrders[1].table && tableOrders[0].customer === tableOrders[1].customer) {
-                let firstItems = tableOrders[1].items.sort(function (a, b) {
+            let tableOrders = Order.all.filter(order => order.table === parseInt(formValues[9]))
+            if (tableOrders[tableOrders.length - 1].table === parseInt(formValues[9])) {
+                let firstItems = tableOrders[tableOrders.length - 1].items.sort(function (a, b) {
                     return a.id - b.id;
                   })
-                let secondItems = tableOrders[0].items.sort(function (a, b) {
+                let secondItems = barOrderItems.sort(function (a, b) {
                     return a.id - b.id;
                   })
                 for (let i=0;i<firstItems.length;i++) {
                     if (firstItems[i] !== secondItems[i]) {
                         Swal.fire("Ouch! You got the order wrong!")
-                    } else {
+                    } 
+                    if (firstItems[i] === secondItems[i]) {
                         Swal.fire("Order Fulfilled!")
-                        let tableOrderFilled = document.getElementById(`table-${tableOrders[0].table}-content`).firstChild
+                        let tableOrderFilled = document.getElementById(`table-${tableOrders[tableOrders.length - 1].table}-content`).firstChild
                         let emojiOrder = ""
-                        if (tableOrders[1].items.length === 1) {
-                            tableOrderFilled.innerText = tableOrders[1].items[0].icon
+                        if (tableOrders[tableOrders.length - 1].items.length === 1) {
+                            tableOrderFilled.innerText = tableOrders[tableOrders.length - 1].items[0].icon
                         } else {
-                        tableOrders[1].items.forEach(item => emojiOrder += `${item.icon}`)
+                        tableOrders[tableOrders.length - 1].items.forEach(item => emojiOrder += `${item.icon}`)
                         tableOrderFilled.innerText = emojiOrder
                     }
                     }
