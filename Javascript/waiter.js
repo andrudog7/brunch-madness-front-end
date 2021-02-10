@@ -33,6 +33,7 @@ function moveWaiter(e) {
       }
       findOrder()
       findBar()
+      findRegister()
     })
   }
   
@@ -45,6 +46,7 @@ function moveWaiter(e) {
       }
       findOrder()
       findBar()
+      findRegister()
     })
   }
 
@@ -57,6 +59,7 @@ function moveWaiter(e) {
       }
       findOrder()
       findBar()
+      findRegister()
     })
   }
   
@@ -69,6 +72,7 @@ function moveWaiter(e) {
       }
       findOrder()
       findBar()
+      findRegister()
     })
   }
 
@@ -170,19 +174,30 @@ function moveWaiter(e) {
                       }
                       })
                       if (compareArray.find(e => e === "false")) {
-                        Swal.fire("Ouch! You got the order wrong!")
+                        Swal.fire({
+                            icon: "error",
+                            text: "Ouch! You got the order wrong!"})
                       } else {
-                        Swal.fire("Order Fulfilled!")
+                        Swal.fire({
+                            icon: "success",
+                            text: "Order Fulfilled!"})
                         let tableOrderFilled = document.getElementById(`table-${thisTableOrder.table}-content`).firstChild
                         let emojiOrder = ""
                         if (thisTableOrder.items.length === 1) {
+                            tipsEarned = document.getElementById('tipCount')
+                            tipsEarned.innerText = `Tips: $${totalTips+=1}`
                             tableOrderFilled.innerText = thisTableOrder.items[0].icon
+                            tablesServed = document.getElementById('tableCount')
+                            tablesServed.innerText = `Tables Served: ${totalTables+=1}`
                         } else {
                         thisTableOrder.items.forEach(item => emojiOrder += `${item.icon}`)
                         tableOrderFilled.innerText = emojiOrder
                         let tablesServed
                         tablesServed = document.getElementById('tableCount')
                         tablesServed.innerText = `Tables Served: ${totalTables+=1}`
+                        let tipsEarned 
+                        tipsEarned = document.getElementById('tipCount')
+                        tipsEarned.innerText = `Tips: $${totalTips+=1}`
                       }
                       setTimeout(removeOrder.bind(null, tableOrderFilled, thisTable, thisTableOrder), Math.ceil(Math.random() * 50000))
                       compareArray = []
@@ -193,10 +208,52 @@ function moveWaiter(e) {
    }
   
   let totalTables = 0
+  let totalTips = 0
 
   function removeOrder(tableOrderFilled, thisTable, thisTableOrder) {
     tableOrderFilled.innerText = `#${thisTable}`
     TABLES.push(thisTable)
     Table.all.find(table => table.number === thisTable).orders.push(thisTableOrder)
+}
+
+async function findRegister() {       
+    if (WAITER.style.left === "-540px" && WAITER.style.bottom === "-150px"){
+        const { value: formValues} = await Swal.fire({
+            title: 'Register',
+            html: `<label for="check"style="width:200px;display:inline-block;padding:8px">Give Check to Table:</label><select name="check" id="check"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>` +
+            `<label for="money"style="width:200px;display:inline-block;padding:8px">Receive Payment for Table:</label><select name="money" id="money"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>`,
+            focusConfirm: false,
+            preConfirm: () => {
+              return [
+                document.getElementById('check').value + "Check",
+                document.getElementById('money').value + "Money"
+              ]
+            }
+          })
+          if (formValues) {
+              if (formValues[0].charAt(0) !== "S") {
+                let checkTable = Table.all.find(t => t.number === parseInt(formValues[0].charAt(0)))
+                debugger
+                let tableContent = document.getElementById(`table-${checkTable.number}-content`).firstChild
+                if (tableContent.innerText === "✍️") {
+                    Swal.fire(`The check has been delivered for table #${checkTable.number}`)
+                    setTimeout(function() {
+                        let chance = Math.ceil(Math.random() * 2)
+                        if (chance === 1) {
+                            tableContent.innerText = "💳"
+                         }
+                         if (chance === 2) {
+                            tableContent.innerText = "💵"
+                         }
+                    }, Math.ceil(Math.random() * 10000))
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        text: `Ooops! Table #${checkTable.number} did not request the check yet!`
+                    })
+                    }
+            }
+          }
+    }
 }
   
