@@ -113,8 +113,10 @@ function selectTable() {
     table = TABLES[randomNum]
     TABLES.splice(randomNum, 1)
     const tableText = document.getElementById(`table-${table}`).children[0]
-    customer = selectCustomer()
-    tableText.innerText = customer.name
+    if (tableText.innerText === "") {
+        customer = selectCustomer()
+        tableText.innerText = customer.name
+    }
     customerOrder(table, customer)
     console.log(TABLES)
     console.log(table)

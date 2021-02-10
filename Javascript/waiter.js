@@ -158,9 +158,11 @@ function moveWaiter(e) {
                 }
             }
             }
-            let tableOrders = Order.all.filter(order => order.table === parseInt(formValues[9]))
-            if (tableOrders[tableOrders.length - 1].table === parseInt(formValues[9])) {
-                let firstItems = tableOrders[tableOrders.length - 1].items.sort(function (a, b) {
+            let thisTable = parseInt(formValues[9])
+            let tableOrders = Order.all.filter(order => order.table === thisTable)
+            let thisTableOrder = tableOrders[tableOrders.length - 1]
+            if (thisTableOrder.table === thisTable) {
+                let firstItems = thisTableOrder.items.sort(function (a, b) {
                     return a.id - b.id;
                   })
                 let secondItems = barOrderItems.sort(function (a, b) {
@@ -172,18 +174,30 @@ function moveWaiter(e) {
                     } 
                     if (firstItems[i] === secondItems[i]) {
                         Swal.fire("Order Fulfilled!")
-                        let tableOrderFilled = document.getElementById(`table-${tableOrders[tableOrders.length - 1].table}-content`).firstChild
+                        let tableOrderFilled = document.getElementById(`table-${thisTableOrder.table}-content`).firstChild
                         let emojiOrder = ""
-                        if (tableOrders[tableOrders.length - 1].items.length === 1) {
-                            tableOrderFilled.innerText = tableOrders[tableOrders.length - 1].items[0].icon
+                        if (thisTableOrder.items.length === 1) {
+                            tableOrderFilled.innerText = thisTableOrder.items[0].icon
                         } else {
-                        tableOrders[tableOrders.length - 1].items.forEach(item => emojiOrder += `${item.icon}`)
+                        thisTableOrder.items.forEach(item => emojiOrder += `${item.icon}`)
                         tableOrderFilled.innerText = emojiOrder
                     }
+                    totalTables = 0
+                    let tablesServed
+                    tablesServed = document.getElementById('tableCount')
+                    tablesServed.innerText = `Tables Served: ${totalTables+=1}`
+                    setTimeout(removeOrder.bind(null, tableOrderFilled, thisTable, thisTableOrder), Math.ceil(Math.random() * 50000))
                     }
                 }
             }
           }
    }
   }
+
+  function removeOrder(tableOrderFilled, thisTable, thisTableOrder) {
+    tableOrderFilled.innerText = `#${thisTable}`
+    TABLES.push(thisTable)
+    Table.all.find(table => table.number === thisTable).orders.push(thisTableOrder)
+    debugger
+}
   
