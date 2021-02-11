@@ -15,3 +15,16 @@ new Table(number = 5)
 new Table(number = 6)
 new Table(number = 7)
 new Table(number = 8)
+
+function calculateTotalTips(table) {
+    let tableTotalOrderCost = []
+    table.orders.forEach(order => {
+        order.items.forEach(item => {
+            tableTotalOrderCost.push(item.price)
+        })
+    })
+    let tableTotalCost = tableTotalOrderCost.reduce(
+        (accum, value) => accum + value, 0
+    )
+    console.log(tableTotalCost)
+}

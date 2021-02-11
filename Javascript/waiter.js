@@ -190,14 +190,14 @@ function moveWaiter(e) {
                             tablesServed = document.getElementById('tableCount')
                             tablesServed.innerText = `Tables Served: ${totalTables+=1}`
                         } else {
-                        thisTableOrder.items.forEach(item => emojiOrder += `${item.icon}`)
-                        tableOrderFilled.innerText = emojiOrder
-                        let tablesServed
-                        tablesServed = document.getElementById('tableCount')
-                        tablesServed.innerText = `Tables Served: ${totalTables+=1}`
-                        let tipsEarned 
-                        tipsEarned = document.getElementById('tipCount')
-                        tipsEarned.innerText = `Tips: $${totalTips+=1}`
+                            thisTableOrder.items.forEach(item => emojiOrder += `${item.icon}`)
+                            tableOrderFilled.innerText = emojiOrder
+                            let tablesServed
+                            tablesServed = document.getElementById('tableCount')
+                            tablesServed.innerText = `Tables Served: ${totalTables+=1}`
+                            let tipsEarned 
+                            tipsEarned = document.getElementById('tipCount')
+                            tipsEarned.innerText = `Tips: $${totalTips+=1}`
                       }
                       setTimeout(removeOrder.bind(null, tableOrderFilled, thisTable, thisTableOrder), Math.ceil(Math.random() * 50000))
                       compareArray = []
@@ -233,10 +233,12 @@ async function findRegister() {
           if (formValues) {
               if (formValues[0].charAt(0) !== "S") {
                 let checkTable = Table.all.find(t => t.number === parseInt(formValues[0].charAt(0)))
-                debugger
                 let tableContent = document.getElementById(`table-${checkTable.number}-content`).firstChild
                 if (tableContent.innerText === "✍️") {
-                    Swal.fire(`The check has been delivered for table #${checkTable.number}`)
+                    Swal.fire({
+                        icon: "success",
+                        text: `The check has been delivered for table #${checkTable.number}`
+                    })
                     setTimeout(function() {
                         let chance = Math.ceil(Math.random() * 2)
                         if (chance === 1) {
@@ -252,6 +254,26 @@ async function findRegister() {
                         text: `Ooops! Table #${checkTable.number} did not request the check yet!`
                     })
                     }
+            }
+            if (formValues[1].charAt(0) !== "S") {
+                let moneyTable = Table.all.find(t => t.number === parseInt(formValues[1].charAt(0)))
+                let tableContent = document.getElementById(`table-${moneyTable.number}-content`).firstChild
+                if ((tableContent.innerText === "💵") || (tableContent.innerText === "💳")) {
+                    Swal.fire({
+                        icon: "success",
+                        text: `Congratulations, table #${moneyTable.number} has closed out!`
+                    })
+                    tableContent.innerText = `#${moneyTable.number}`
+                    paidTableText = document.getElementById(`table-${moneyTable.number}`).children[0]
+                    paidTableText.innerText = ""
+                    calculateTotalTips(moneyTable)
+                    moneyTable.orders = []
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        text: `Ooops! Table #${moneyTable.number} has not paid yet!`
+                    })
+                }
             }
           }
     }
