@@ -26,5 +26,8 @@ function calculateTotalTips(table) {
     let tableTotalCost = tableTotalOrderCost.reduce(
         (accum, value) => accum + value, 0
     )
-    console.log(tableTotalCost)
+    let tableTips 
+    tableTips = Math.ceil(tableTotalCost * .2)
+    tipsEarned = document.getElementById('tipCount')
+    tipsEarned.innerText = `Tips: $${totalTips+=tableTips}`
 }

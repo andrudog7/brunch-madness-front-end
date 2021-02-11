@@ -1,7 +1,11 @@
 const submitBtn = document.getElementById('submit-btn')
 const usernameInput = document.getElementById('username')
-
 submitBtn.addEventListener('click', getUserData)
+let currentUser
+let currentUserId
+let finalMin 
+let finalSec
+let finalMilisec
 
 function getUserData(e) {
     e.preventDefault()
@@ -36,6 +40,9 @@ function createUserScores(userInfo) {
     playBtn.style.marginLeft = "42px"
 
     loginForm.style.display = "none"
+    
+    currentUser = userInfo.username
+    currentUserId = userInfo.id
     h3.innerText = `${userInfo.username}`
     h3.style.textAlign = "center"
     h4.innerText = "Top 5 Games"
@@ -52,4 +59,28 @@ function createUserScores(userInfo) {
     userInfoDiv.append(playBtn)
     playBtn.addEventListener('click', startGame)
 }
+}
+
+function recordUserScore() {
+    finalMin = document.getElementById('min').innerText
+    finalSec = document.getElementById('sec').innerText
+    finalMilisec = document.getElementById('milisec').innerText
+    let userObj = {
+        duration: "00:" + finalMin + finalSec + finalMilisec,
+        tips: totalTips,
+        tables_served: totalTables
+    }
+    
+    let configObj = {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(userObj)
+    }
+
+    fetch(`http://127.0.0.1:3000/users/${currentUserId}/scores`, configObj)
+    .then(response => response.json())
+    .then(userData => console.log(userData))
 }

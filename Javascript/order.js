@@ -21,3 +21,28 @@ class Order {
     }
     static all = []
 }
+
+function displayOrder(order) {
+    Swal.fire(`${Customer.all.find(e => e.id === order.customer).name}'s Order`,
+    `${printOrderContent(order)}`)
+}
+
+function printOrderContent(order) {
+    let string = ""
+    for(i = 0; i < order.displayItems().length; i ++) {
+        string += ((order.displayItems()[i] + "<br>"))}
+    return string
+}
+
+function compareOrders(firstItems, secondItems) {
+    let compareArray = []
+    firstItems.forEach((item, index) => {
+        if (item === secondItems[index]) {
+            compareArray.push("true")
+        } 
+        if (item !== secondItems[index]) {
+        compareArray.push("false")
+        }
+    })
+    return compareArray
+}
