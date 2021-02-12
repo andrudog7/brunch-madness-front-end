@@ -21,6 +21,7 @@ class Order {
     }
     static all = []
 }
+let orderInterval
 
 function displayOrder(order) {
     Swal.fire(`${Customer.all.find(e => e.id === order.customer).name}'s Order`,
@@ -45,4 +46,32 @@ function compareOrders(firstItems, secondItems) {
         }
     })
     return compareArray
+}
+
+function orderFulfilledCountdown(tableContent, table) {
+    let timesRun = 0;
+    orderInterval = setInterval(function(){
+        timesRun += 1;
+        if (timesRun === 1 && tableContent.innerText === "🤗") {
+            tableContent.innerText = "😬"
+        }
+        if (timesRun === 2 && tableContent.innerText === "😬") {
+            tableContent.innerText = "🙄"
+        }
+        if (timesRun === 3 && tableContent.innerText === "🙄") {
+            tableContent.innerText = "😡"
+        }
+        if (timesRun === 4 && tableContent.innerText === "😡"){
+            tableContent.innerText = "🤬"
+        }
+        if (timesRun === 5 && tableContent.innerText === "🤬") {
+            clearInterval(orderInterval)
+            Swal.fire({
+                icon: "error",
+                title: "Ooops",
+                text: `You have neglected table #${table} for too long!`})
+                addMistakes()
+        }
+    }
+, 12000)
 }
