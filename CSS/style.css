@@ -1,7 +1,8 @@
 h1#game-title {
-    color: red;
+    color: rgb(63, 31, 31);
     text-align: center;
     margin-top: 4px;
+    font-family:Copperplate;
 }
 
 #sidebar {
