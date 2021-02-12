@@ -32,7 +32,7 @@ function createUserScores(userInfo) {
     const loginForm = document.getElementById('login-form')
     const userInfoDiv = document.getElementById('user-info')
     let h3 = document.createElement('h3')
-    let h4 = document.createElement('h4')
+    let h5 = document.createElement('h5')
     let ol = document.createElement('ol')
     let playBtn = document.createElement('button')
     playBtn.textContent = "Play New Game"
@@ -45,10 +45,11 @@ function createUserScores(userInfo) {
     currentUserId = userInfo.id
     h3.innerText = `${userInfo.username}`
     h3.style.textAlign = "center"
-    h4.innerText = "Top 5 Games"
-    h4.style.textAlign = "center"
+    h5.innerText = "My High Scores"
+    h5.style.textAlign = "center"
+    h5.style.margin = "2px"
     userInfoDiv.append(h3)
-    userInfoDiv.append(h4)
+    userInfoDiv.append(h5)
     if (userInfo.highest_tips !== []) {
     userInfo.highest_tips.forEach(score => {
         let li = document.createElement('li')

@@ -1,6 +1,7 @@
-#game-title {
+h1#game-title {
     color: red;
     text-align: center;
+    margin-top: 4px;
 }
 
 #sidebar {
@@ -144,4 +145,12 @@
     bottom: 30px;
     left: 0px;
     position: relative;
+  }
+
+  div#high-scores {
+      padding-top: 0px;
+  }
+
+  div#user-info {
+      padding-top: 0px;
   }

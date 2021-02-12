@@ -35,5 +35,15 @@ function displayHighScores(highScores) {
     })
 }
 
+let howToPlay = document.getElementById('how-to')
+howToPlay.addEventListener('click', displayInstructions)
+
+function displayInstructions() {
+    Swal.fire({
+        icon: "info",
+        title: "How to Play Brunch Madness",
+        html: "<p>Brunch Madness is a game where you act as the waiter during a very busy brunch period.  Make 3 mistakes and you're fired!<br><br>Use the following keys to move around the restaurant:<br>⬇️➡️⬅️⬆️<br><br>When a customer has placed an order, an emoji will appear on their table.  Move the waiter to the emoji to access the order.  Then move the waiter to the bar entrance to fulfill the order.  You have 60 seconds to complete the order or it will count as a mistake.  The emoji expression will change with time:<br><br>🤗 - Initial order has been placed<br>😬 - Customer is still happy and waiting<br>🙄 - Getting slightly annoyed by the waiting<br>😡 - The customer is getting angry (40 seconds have passed)<br>🤬 - The customer is really upset and you have 10 seconds to complete the order<br><br>Once an order has been filled, the customer will either choose to place another order or signal they are ready for the check with ✍️.  You will need to access the register to give the check and also receive payment when the customer puts their money on the table.<br><br>Score: You get a $1 tip for every order you get right.  Once a table has closed out you will also get 20% of their total bill added to your tips.<br><br>Try to get a high score by making the most in tips!</p>"})
+}
+
 
 
