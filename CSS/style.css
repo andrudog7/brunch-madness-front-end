@@ -5,7 +5,7 @@ h1#game-title {
 }
 
 #sidebar {
-    height: 800px;
+    height: 643px;
     width: 15%;
     position: absolute;
     left: 0;
@@ -25,12 +25,14 @@ h1#game-title {
     font-size: 18px;
     display: inline-block;
     width: 100%;
+    margin-top: -7px;
     }
 
 .tables {
         /* height: 200px; */
         width: 200px;
-        background-color: #bbb;
+        background-image: url("download.png");
+        /* background-color: rgb(123, 103, 77); */
         border-radius: 50%;
         display: inline-block;
         text-align: center;
@@ -38,12 +40,15 @@ h1#game-title {
         margin-top: 20px;
         margin-left: 7px;
         line-height: 200px;
+        font-weight: 900;
     }   
 
     .restaurant {
         display: none;
         width: 85%;
         text-align: center;
+        background-image: url("concretefloor.png");
+        background-size: cover;
     }
 
 .seating-1, .seating-2 {
@@ -59,6 +64,11 @@ h1#game-title {
  .root {
      display: inline;
  }
+
+ #table-1 h4, #table-2 h4, #table-3 h4, #table-4 h4, #table-5 h4, #table-6 h4, #table-7 h4, #table-8 h4 {
+    font-weight: 900;
+    font-size: 25px;
+}
 
  #table-1, #table-2, #table-3, #table-4, #table-5, #table-6, #table-7, #table-8 {
     width: 22%;
@@ -89,7 +99,8 @@ h1#game-title {
  .bar {
     height: 250px;
     width: 100px;
-    background-color: #bbb;
+    background-image: url("woodbar.png");
+    /* background-color: #bbb; */
     float: left;
     text-align: center;
     margin: 10px;
@@ -102,7 +113,7 @@ h1#game-title {
 
  .bar:after {
      position: absolute;
-     border: 5px solid white;
+     border: 3px solid white;
      height: 100px;
      display: block;
      content: "";

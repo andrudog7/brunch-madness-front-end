@@ -12,7 +12,16 @@ function startGame(e) {
     formatGameSidebar(e)
     startTimer()
     selectTable()
+    playMusic()
     tableInterval = setInterval(selectTable, 20000)
+}
+
+function playMusic() {
+  let tracklist = [{path: "yummy.m4a"}]
+let curr_track = document.createElement('audio') 
+curr_track.src = tracklist[0].path
+curr_track.load()
+curr_track.play()
 }
 
 function formatGameSidebar(e) {
