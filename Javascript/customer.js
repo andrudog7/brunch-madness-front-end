@@ -26,6 +26,34 @@ function customerOrder(table, customer) {
         order.items.push(Item.all[Math.floor(Math.random() * 9)])
     }
     let tableContent = document.getElementById(`table-${table}-content`).firstChild
-    setTimeout(function() {
-        tableContent.innerText = "‼️"}, 2500)
+    tableContent.innerText = "🤗"
+    orderFulfilledCountdown(tableContent, table) 
+}
+
+function orderFulfilledCountdown(tableContent, table) {
+    let timesRun = 0;
+    const orderInterval = setInterval(function(){
+        timesRun += 1;
+        if (timesRun === 1) {
+            tableContent.innerText = "😬"
+        }
+        if (timesRun === 2) {
+            tableContent.innerText = "🙄"
+        }
+        if (timesRun === 3) {
+            tableContent.innerText = "😡"
+        }
+        if (timesRun === 4){
+            tableContent.innerText = "🤬"
+        }
+        if (timesRun === 5) {
+            clearInterval(orderInterval)
+            Swal.fire({
+                icon: "error",
+                title: "Ooops",
+                text: `You have neglected table #${table} for too long!`})
+                addMistakes()
+        }
+    }
+, 12000)
 }

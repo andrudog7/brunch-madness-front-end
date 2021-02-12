@@ -183,7 +183,7 @@ function checkGameOver() {
     Swal.fire({
       icon: "error",
       title: "You're Fired",
-      html: `<p>Ooops! Sorry ${currentUser}, you made too many mistakes!</p><br><h4>Your final Score:</h4><br>Tips: ${totalTips}<br>Tables Served: ${totalTables}<br>Final Time: ${finalMin + finalSec + finalMilisec}`
+      html: `<p>Ooops! Sorry ${currentUser}, you made too many mistakes!</p><br><h4>Your final Score:</h4><br>Tips: $${totalTips}<br>Tables Served: ${totalTables}<br>Final Time: ${finalMin + finalSec + finalMilisec}`
     })
   }
 }

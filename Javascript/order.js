@@ -11,7 +11,7 @@ class Order {
         let displayOrderContent = ""
         uniqNames.forEach(item => {
             let count = this.items.filter(orderItem => orderItem === item).length
-            displayOrderContent += `${item.name}: ${count}, `
+            displayOrderContent += `${count} ${item.name}, `
         })
           return displayOrderContent.split(",").splice(0, displayOrderContent.split(",").length - 1)
     }

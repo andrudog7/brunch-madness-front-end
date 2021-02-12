@@ -89,28 +89,29 @@ function moveWaiter(e) {
     let tableContent6 = document.getElementById(`table-6-content`).firstChild
     let tableContent7 = document.getElementById(`table-7-content`).firstChild
     let tableContent8 = document.getElementById(`table-8-content`).firstChild
-      if (tableContent1.innerText === "‼️" && (WAITER.style.left === "-360px") && (WAITER.style.bottom === "170px")) {
+    let orderEmojis = ["🤗", "😬", "🙄", "😡", "🤬"]
+      if (orderEmojis.find(e => e === tableContent1.innerText) && (WAITER.style.left === "-360px") && (WAITER.style.bottom === "170px")) {
         displayOrder(Order.tableLastOrder(1))
       }
-      if (tableContent2.innerText === "‼️" && WAITER.style.left === "-120px" && WAITER.style.bottom === "170px") {
+      if (orderEmojis.find(e => e === tableContent2.innerText) && WAITER.style.left === "-120px" && WAITER.style.bottom === "170px") {
         displayOrder(Order.tableLastOrder(2))
       }
-      if (tableContent3.innerText === "‼️" && WAITER.style.left === "120px" && WAITER.style.bottom === "170px") {
+      if (orderEmojis.find(e => e === tableContent3.innerText) && WAITER.style.left === "120px" && WAITER.style.bottom === "170px") {
         displayOrder(Order.tableLastOrder(3))
       }
-      if (tableContent4.innerText === "‼️" && WAITER.style.left === "360px" && WAITER.style.bottom === "170px") {
+      if (orderEmojis.find(e => e === tableContent4.innerText) && WAITER.style.left === "360px" && WAITER.style.bottom === "170px") {
         displayOrder(Order.tableLastOrder(4))
       }
-      if (tableContent5.innerText === "‼️" && WAITER.style.left === "-360px" && WAITER.style.bottom === "-150px") {
+      if (orderEmojis.find(e => e === tableContent5.innerText) && WAITER.style.left === "-360px" && WAITER.style.bottom === "-150px") {
         displayOrder(Order.tableLastOrder(5))
       }
-      if (tableContent6.innerText === "‼️" && WAITER.style.left === "-120px" && WAITER.style.bottom === "-150px") {
+      if (orderEmojis.find(e => e === tableContent6.innerText) && WAITER.style.left === "-120px" && WAITER.style.bottom === "-150px") {
         displayOrder(Order.tableLastOrder(6))
       }
-      if (tableContent7.innerText === "‼️" && WAITER.style.left === "120px" && WAITER.style.bottom === "-150px") {
+      if (orderEmojis.find(e => e === tableContent7.innerText) && WAITER.style.left === "120px" && WAITER.style.bottom === "-150px") {
         displayOrder(Order.tableLastOrder(7))
       }
-      if (tableContent8.innerText === "‼️" && WAITER.style.left === "360px" && WAITER.style.bottom === "-150px") {
+      if (orderEmojis.find(e => e === tableContent8.innerText) && WAITER.style.left === "360px" && WAITER.style.bottom === "-150px") {
         displayOrder(Order.tableLastOrder(8))
       }
   }
@@ -119,16 +120,17 @@ function moveWaiter(e) {
       if (WAITER.style.left === "-540px" && WAITER.style.bottom === "150px") {
         const { value: formValues} = await Swal.fire({
             title: 'New Order',
-            html: `<label for="Mimosa"style="width:200px;display:inline-block;padding:2px">Mimosa:</label><select name="Mimosa" id="Mimosa"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="Bloody Mary"style="width:200px;display:inline-block;padding:2px">Bloody Mary:</label><select name="Bloody Mary" id="Bloody Mary"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="Coffee"style="width:200px;display:inline-block;padding:2px">Coffee:</label><select name="Coffee" id="Coffee"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
+            showCancelButton: 'true',
+            html: `<label for="table"style="font-weight:bold;width:200px;display:inline-block;padding:8px">Table #</label><select name="Table" id="Table"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>` +
             `<label for="Beer"style="width:200px;display:inline-block;padding:2px">Beer:</label><select name="Beer" id="Beer"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="House Martini"style="width:200px;display:inline-block;padding:2px">House Martini:</label><select name="House Martini" id="House Martini"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="Sangria"style="width:200px;display:inline-block;padding:2px">Sangria:</label><select name="Sangria" id="Sangria"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
+            `<label for="Bloody Mary"style="width:200px;display:inline-block;padding:2px">Bloody Mary:</label><select name="Bloody Mary" id="Bloody Mary"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
             `<label for="Bourbon Brunch Cocktail"style="width:200px;display:inline-block;padding:2px">Bourbon Brunch Cocktail:</label><select name="Bourbon Brunch Cocktail" id="Bourbon Brunch Cocktail"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="Pitcher of Mimosa"style="width:200px;display:inline-block;padding:2px">Pitcher of Mimosa:</label><select name="Pitcher of Mimosa" id="Pitcher of Mimosa"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
+            `<label for="Coffee"style="width:200px;display:inline-block;padding:2px">Coffee:</label><select name="Coffee" id="Coffee"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
+            `<label for="House Martini"style="width:200px;display:inline-block;padding:2px">House Martini:</label><select name="House Martini" id="House Martini"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
+            `<label for="Mimosa"style="width:200px;display:inline-block;padding:2px">Mimosa:</label><select name="Mimosa" id="Mimosa"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
+            `<label for="Sangria"style="width:200px;display:inline-block;padding:2px">Sangria:</label><select name="Sangria" id="Sangria"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
             `<label for="Pitcher of Beer"style="width:200px;display:inline-block;padding:2px">Pitcher of Beer:</label><select name="Pitcher of Beer" id="Pitcher of Beer"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="table"style="width:200px;display:inline-block;padding:8px">To Table Number:</label><select name="Table" id="Table"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>`,
+            `<label for="Pitcher of Mimosa"style="width:200px;display:inline-block;padding:2px">Pitcher of Mimosa:</label><select name="Pitcher of Mimosa" id="Pitcher of Mimosa"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>`,
             focusConfirm: false,
             preConfirm: () => {
               return [
@@ -192,8 +194,9 @@ async function findRegister() {
     if (WAITER.style.left === "-540px" && WAITER.style.bottom === "-150px"){
       const { value: formValues} = await Swal.fire({
         title: 'Register',
-        html: `<label for="check"style="width:200px;display:inline-block;padding:8px">Give Check to Table:</label><select name="check" id="check"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>` +
-        `<label for="money"style="width:200px;display:inline-block;padding:8px">Receive Payment for Table:</label><select name="money" id="money"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>`,
+        showCancelButton: 'true',
+        html: `<label for="check"style="width:200px;display:inline-block;padding:8px">Give Check to:</label><select name="check" id="check"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>` +
+        `<label for="money"style="width:200px;display:inline-block;padding:8px">Close Out:</label><select name="money" id="money"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>`,
         focusConfirm: false,
         preConfirm: () => {
           return [
