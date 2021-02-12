@@ -236,6 +236,7 @@ function rectifyPayment(formValues) {
             text: `Congratulations, table #${moneyTable.number} has closed out!`
         })
         addTipsforClosedTable(moneyTable, tableContent)
+        addTableServed()
         TABLES.push(moneyTable.number)
         
     } else {
@@ -258,13 +259,11 @@ function displayOrderToTable(thisTableOrder, tableOrderFilled) {
   let emojiOrder = ""
   if (thisTableOrder.items.length === 1) {
     addTips()
-    addTableServed()
     tableOrderFilled.innerText = thisTableOrder.items[0].icon
   } else {
     thisTableOrder.items.forEach(item => emojiOrder += `${item.icon}`)
     tableOrderFilled.innerText = emojiOrder
     let tablesServed
-    addTableServed()
     let tipsEarned 
     addTips()
   }
