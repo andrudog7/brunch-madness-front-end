@@ -5,13 +5,11 @@ let tableInterval
 let playBtn
 
 function startGame(e) {
-    formatGameSidebar(e)
-    if (e.target.innerText === "Play Again") {
+  if (e.target.innerText === "Play Again") {
       clearOldGame()
-      startTimer()
-      selectTable()
-      tableInterval = setInterval(selectTable, 20000)
+      resetTimer()
     }
+    formatGameSidebar(e)
     startTimer()
     selectTable()
     tableInterval = setInterval(selectTable, 20000)
@@ -137,7 +135,7 @@ function checkTime(i) {
   return i;
 }
 
-function reset() {
+function resetTimer() {
 
   milisec = 0;
   sec = 0;
@@ -322,9 +320,9 @@ function clearOldGame() {
   totalTips = 0
   totalMistakes = 0
 
-  let currentGameDiv = document.getElementById('current-game')
-  currentGameDiv.style.display = "none"
-  currentGameDiv.id = "game-over"
+  let oldGameDiv = document.getElementById('current-game')
+  oldGameDiv.style.display = "none"
+  oldGameDiv.id = "game-over"
   
   let table1CustomerName = document.getElementById('table-1').children[0]
   let table2CustomerName = document.getElementById('table-2').children[0]
