@@ -3,6 +3,7 @@ let totalTips = 0
 let totalMistakes = 0
 let tableInterval
 let playBtn
+let curr_track = document.createElement('audio') 
 
 function startGame(e) {
   if (e.target.innerText === "Play Again") {
@@ -18,10 +19,9 @@ function startGame(e) {
 
 function playMusic() {
   let tracklist = [{path: "yummy.m4a"}]
-let curr_track = document.createElement('audio') 
-curr_track.src = tracklist[0].path
-curr_track.load()
-curr_track.play()
+  curr_track.src = tracklist[0].path
+  curr_track.load()
+  curr_track.play()
 }
 
 function formatGameSidebar(e) {
@@ -82,12 +82,14 @@ function formatGameSidebar(e) {
   gameDuration.style.textAlign = "center"
   gameDuration.style.marginLeft = "13px"
   gameDuration.style.marginBottom = "5px"
+  gameDuration.style.marginTop = "15px"
   gameDuration.append(timerMinute)
   gameDuration.append(timerSec)
   gameDuration.append(timerMilisec)
   
   let currentGameDiv = document.createElement('div')
   currentGameDiv.id = "current-game"
+  currentGameDiv.style.paddingBottom = "25px"
   currentGameDiv.prepend(gameMistakes)
   currentGameDiv.prepend(gameTablesServed)
   currentGameDiv.prepend(gameTips)
@@ -200,7 +202,7 @@ function addMistakes() {
 }
 
 function checkGameOver() {
-  if (totalMistakes === 3) {
+  if (totalMistakes >= 3) {
     stopTimer()
     clearInterval(tableInterval)
     clearInterval(orderInterval)
@@ -229,6 +231,10 @@ function checkGameOver() {
       icon: "error",
       title: "You're Fired",
       html: `<p>Ooops! Sorry ${currentUser}, you made too many mistakes!</p><br><h4>Your final Score:</h4><br>Tips: $${totalTips}<br>Tables Served: ${totalTables}<br>Final Time: ${finalMin + finalSec + finalMilisec}`
+    }).then((result) => {
+      if (result.isConfirmed) {
+        curr_track.pause()
+      }
     })
   }
 }

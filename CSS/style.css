@@ -13,7 +13,21 @@ h1#game-title {
     top: 0;
     padding-top: 10px;
     border: 1px solid black;
+    
     }
+
+#sidebar::before {
+    content: "";
+    position: absolute;
+    background-image: url('brunch_cocktails.png');
+    background-size: cover;
+    background-position: center;
+    opacity: .3;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
     
 #sidebar div {
     padding: 8px;
@@ -114,7 +128,7 @@ h1#game-title {
 
  .bar:after {
      position: absolute;
-     border: 3px solid white;
+     border: 3px solid rgb(164, 164, 164);
      height: 100px;
      display: block;
      content: "";
@@ -144,11 +158,13 @@ h1#game-title {
 
   #user-info h3 {
       margin: 10px;
+      margin-top: -15px;
   }
 
   #user-info {
       justify-content: center;
       align-items: center;
+      position: relative;
   }
 
   #waiter {
@@ -161,6 +177,7 @@ h1#game-title {
 
   div#high-scores {
       padding-top: 0px;
+      position: relative;
   }
 
   div#user-info {

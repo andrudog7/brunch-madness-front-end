@@ -34,6 +34,7 @@ function createUserScores(userInfo) {
     let h3 = document.createElement('h3')
     let h5 = document.createElement('h5')
     let ol = document.createElement('ol')
+    ol.style.marginBottom = "0px"
     let playBtn = document.createElement('button')
     playBtn.textContent = "Play New Game"
     playBtn.id = "play-button"
@@ -45,9 +46,11 @@ function createUserScores(userInfo) {
     currentUserId = userInfo.id
     h3.innerText = `${userInfo.username}`
     h3.style.textAlign = "center"
+    h3.style.marginTop = "15px"
     h5.innerText = "My High Scores"
     h5.style.textAlign = "center"
     h5.style.margin = "2px"
+    h5.style.marginTop = "15px"
     userInfoDiv.append(h3)
     userInfoDiv.append(h5)
     if (userInfo.highest_tips !== []) {
