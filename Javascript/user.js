@@ -39,7 +39,7 @@ function createUserScores(userInfo) {
     let ol = document.createElement('ol')
     ol.style.marginBottom = "0px"
     let playBtn = document.createElement('button')
-    playBtn.textContent = "Play New Game"
+    playBtn.textContent = checkIfCurrentGame() 
     playBtn.id = "play-button"
     playBtn.style.marginLeft = "35px"
 
@@ -109,5 +109,14 @@ function checkCurrentScore() {
     if(typeof(element) != 'undefined' && element != null){
         element.style.backgroundColor = "greenyellow"
         element.style.fontWeight = "bold"
+    }
+}
+
+function checkIfCurrentGame() {
+    let element = document.getElementById("current-game")
+    if(typeof(element) != 'undefined' && element != null){
+        return "Play Again"
+    } else {
+        return "Play New Game"
     }
 }

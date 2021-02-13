@@ -60,10 +60,12 @@ h1#game-title {
 
     .restaurant {
         display: none;
-        width: 85%;
+        width: 87%;
         text-align: center;
         background-image: url("concretefloor.png");
         background-size: cover;
+        margin-left: -5px;
+        margin-top: -1px;
     }
 
 .seating-1, .seating-2 {
