@@ -28,6 +28,8 @@ function formatGameSidebar(e) {
   //Update Sidebar
   let userArea = document.getElementById('user-info')
   userArea.style.marginTop = "-10px"
+  userArea.children[1].style.marginTop = "25px"
+  userArea.children[1].style.marginBottom = "10px"
   playBtn = e.target
   playBtn.style.display = "none"
   let highScores = document.getElementById('high-scores')
@@ -46,7 +48,7 @@ function formatGameSidebar(e) {
   gameTips.style.marginTop = "5px"
   gameTips.style.marginBottom = "5px"
   gameTips.style.fontSize = "24px"
-  gameTips.style.textAlign = "center"
+  gameTips.style.textAlign = "justify"
   gameTips.innerText = `Tips: $0`
 
   //Game Tables Served
@@ -55,7 +57,7 @@ function formatGameSidebar(e) {
   gameTablesServed.style.marginTop = "5px"
   gameTablesServed.style.marginBottom = "5px"
   gameTablesServed.style.fontSize = "24px"
-  gameTablesServed.style.textAlign = "center"
+  gameTablesServed.style.textAlign = "justify"
   gameTablesServed.innerText = `Tables Served: 0`
 
   //Game Mistakes
@@ -64,7 +66,7 @@ function formatGameSidebar(e) {
   gameMistakes.style.marginTop = "5px"
   gameMistakes.style.marginBottom = "5px"
   gameMistakes.style.fontSize = "24px"
-  gameMistakes.style.textAlign = "center"
+  gameMistakes.style.textAlign = "justify"
   gameMistakes.innerText = `Mistakes: 0`
 
   //Game Timer Setup  
@@ -80,8 +82,8 @@ function formatGameSidebar(e) {
   timerMinute.innerText = "00:"
   gameDuration.innerText = "Time: "
   gameDuration.style.fontSize = "24px"
-  gameDuration.style.textAlign = "center"
-  gameDuration.style.marginLeft = "13px"
+  gameDuration.style.textAlign = "justify"
+  gameDuration.style.marginLeft = "0px"
   gameDuration.style.marginBottom = "5px"
   gameDuration.style.marginTop = "15px"
   gameDuration.append(timerMinute)
@@ -96,7 +98,8 @@ function formatGameSidebar(e) {
   currentGameDiv.prepend(gameTips)
   currentGameDiv.prepend(gameDuration)
   currentGameDiv.prepend(gameHeader)
-  userArea.prepend(currentGameDiv)
+  userArea.append(currentGameDiv)
+  userArea.insertBefore(currentGameDiv, userArea.children[1].nextSibling)
 }
 
 // Timer Function

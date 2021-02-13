@@ -1,7 +1,7 @@
 const submitBtn = document.getElementById('submit-btn')
 const usernameInput = document.getElementById('username')
 submitBtn.addEventListener('click', getUserData)
-let currentUser
+let currentUser = ""
 let currentUserId
 let finalMin 
 let finalSec
@@ -34,33 +34,40 @@ function createUserScores(userInfo) {
     const loginForm = document.getElementById('login-form')
     const userInfoDiv = document.getElementById('user-info')
     userInfoDiv.style.marginTop = "-25px"
-    let h3 = document.createElement('h3')
-    let h5 = document.createElement('h5')
+    
     let ol = document.createElement('ol')
-    ol.style.marginBottom = "0px"
+    ol.style.marginBottom = "15px"
+    ol.style.marginTop = "0px"
     let playBtn = document.createElement('button')
     playBtn.textContent = checkIfCurrentGame() 
     playBtn.id = "play-button"
-    playBtn.style.marginLeft = "35px"
+    playBtn.style.marginLeft = "37px"
 
     loginForm.style.display = "none"
-    
-    currentUser = userInfo.username
-    currentUserId = userInfo.id
+
     let currentUserDiv = document.createElement("div")
     currentUserDiv.id = "current-user-div"
-    h3.innerText = `${userInfo.username}`
-    h3.style.textAlign = "center"
-    h3.style.marginTop = "15px"
+    if (currentUser === "") {
+        currentUser = userInfo.username
+        currentUserId = userInfo.id
+        let h3 = document.createElement('h3')
+        h3.innerText = `${userInfo.username}`
+        h3.style.textAlign = "center"
+        h3.style.marginTop = "40px"
+        h3.style.marginBottom = "0px"
+        userInfoDiv.append(h3)
+    }
+
+    let h5 = document.createElement('h5')
     h5.innerText = "My High Scores"
     h5.style.textAlign = "center"
     h5.style.margin = "2px"
-    h5.style.marginTop = "15px"
+    h5.style.marginTop = "8px"
+    
     userInfoDiv.append(currentUserDiv)
-    currentUserDiv.append(h3)
     currentUserDiv.append(h5)
     if (userInfo.highest_tips !== []) {
-    userInfo.highest_tips.forEach(score => {
+        userInfo.highest_tips.forEach(score => {
         let li = document.createElement('li')
         li.id = score.id
         li.innerText = `Tips: $${score.tips}, Tables: ${score.tables_served}`
@@ -68,6 +75,13 @@ function createUserScores(userInfo) {
     })
     currentUserDiv.append(ol)
     currentUserDiv.append(playBtn)
+    let highScoreDiv = document.getElementById('high-scores')
+    highScoreDiv.children[1].style.marginTop = "25px"
+    highScoreDiv.style.paddingInlineStart = "10px"
+    highScoreDiv.style.marginTop = "10px"
+    highScoreDiv.children[2].style.marginTop = "12px"
+    let howToBtn = document.getElementById('how-to')
+    howToBtn.style.marginTop = "0px"
     checkCurrentScore()
     playBtn.addEventListener('click', startGame)
 }
@@ -117,6 +131,6 @@ function checkIfCurrentGame() {
     if(typeof(element) != 'undefined' && element != null){
         return "Play Again"
     } else {
-        return "Play New Game"
+        return "New Game"
     }
 }
