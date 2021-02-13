@@ -6,9 +6,11 @@ let currentUserId
 let finalMin 
 let finalSec
 let finalMilisec
+let currentGameId = 0
 
 function getUserData(e) {
-    e.preventDefault()
+    if (e) {
+    e.preventDefault()}
 
     let userObj = {
         username: usernameInput.value
@@ -31,6 +33,7 @@ function getUserData(e) {
 function createUserScores(userInfo) {
     const loginForm = document.getElementById('login-form')
     const userInfoDiv = document.getElementById('user-info')
+    userInfoDiv.style.marginTop = "-25px"
     let h3 = document.createElement('h3')
     let h5 = document.createElement('h5')
     let ol = document.createElement('ol')
@@ -38,12 +41,14 @@ function createUserScores(userInfo) {
     let playBtn = document.createElement('button')
     playBtn.textContent = "Play New Game"
     playBtn.id = "play-button"
-    playBtn.style.marginLeft = "42px"
+    playBtn.style.marginLeft = "35px"
 
     loginForm.style.display = "none"
     
     currentUser = userInfo.username
     currentUserId = userInfo.id
+    let currentUserDiv = document.createElement("div")
+    currentUserDiv.id = "current-user-div"
     h3.innerText = `${userInfo.username}`
     h3.style.textAlign = "center"
     h3.style.marginTop = "15px"
@@ -51,16 +56,19 @@ function createUserScores(userInfo) {
     h5.style.textAlign = "center"
     h5.style.margin = "2px"
     h5.style.marginTop = "15px"
-    userInfoDiv.append(h3)
-    userInfoDiv.append(h5)
+    userInfoDiv.append(currentUserDiv)
+    currentUserDiv.append(h3)
+    currentUserDiv.append(h5)
     if (userInfo.highest_tips !== []) {
     userInfo.highest_tips.forEach(score => {
         let li = document.createElement('li')
+        li.id = score.id
         li.innerText = `Tips: $${score.tips}, Tables: ${score.tables_served}`
         ol.appendChild(li)
     })
-    userInfoDiv.append(ol)
-    userInfoDiv.append(playBtn)
+    currentUserDiv.append(ol)
+    currentUserDiv.append(playBtn)
+    checkCurrentScore()
     playBtn.addEventListener('click', startGame)
 }
 }
@@ -86,5 +94,20 @@ function recordUserScore() {
 
     fetch(`http://127.0.0.1:3000/users/${currentUserId}/scores`, configObj)
     .then(response => response.json())
-    .then(userData => console.log(userData))
+    .then(userData => handleNewScore(userData))
+}
+
+function handleNewScore(userData) {
+    currentGameId = userData.id
+    let currentUserDiv = document.getElementById('current-user-div')
+    currentUserDiv.style.display = "none"
+    getUserData()
+}
+
+function checkCurrentScore() {
+    let element = document.getElementById(`${currentGameId}`)
+    if(typeof(element) != 'undefined' && element != null){
+        element.style.backgroundColor = "greenyellow"
+        element.style.fontWeight = "bold"
+    }
 }

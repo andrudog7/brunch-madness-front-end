@@ -26,7 +26,8 @@ function playMusic() {
 
 function formatGameSidebar(e) {
   //Update Sidebar
-  let userArea = e.target.parentElement
+  let userArea = document.getElementById('user-info')
+  userArea.style.marginTop = "-10px"
   playBtn = e.target
   playBtn.style.display = "none"
   let highScores = document.getElementById('high-scores')
