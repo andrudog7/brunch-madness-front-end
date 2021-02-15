@@ -28,8 +28,8 @@ function moveWaiter(e) {
     window.requestAnimationFrame(function() {
       const left = positionToInteger(WAITER.style.left)
   
-      if (left > -600) {
-        WAITER.style.left = `${left - 20}px`;
+      if (left > -560) {
+        WAITER.style.left = `${left - 40}px`;
       }
       findOrder()
       findBar()
@@ -42,7 +42,7 @@ function moveWaiter(e) {
       const left = positionToInteger(WAITER.style.left)
   
       if (left < 400) {
-        WAITER.style.left = `${left + 20}px`;
+        WAITER.style.left = `${left + 40}px`;
       }
       findOrder()
       findBar()
@@ -54,8 +54,8 @@ function moveWaiter(e) {
     window.requestAnimationFrame(function() {
       const bottom = positionToInteger(WAITER.style.bottom)
   
-      if (bottom > -200) {
-        WAITER.style.bottom = `${bottom - 20}px`;
+      if (bottom > -145) {
+        WAITER.style.bottom = `${bottom - 35}px`;
       }
       findOrder()
       findBar()
@@ -68,7 +68,7 @@ function moveWaiter(e) {
       const bottom = positionToInteger(WAITER.style.bottom)
   
       if (bottom < 200) {
-        WAITER.style.bottom = `${bottom + 20}px`;
+        WAITER.style.bottom = `${bottom + 35}px`;
       }
       findOrder()
       findBar()
@@ -102,22 +102,22 @@ function moveWaiter(e) {
       if (orderEmojis.find(e => e === tableContent4.innerText) && WAITER.style.left === "360px" && WAITER.style.bottom === "170px") {
         displayOrder(Order.tableLastOrder(4))
       }
-      if (orderEmojis.find(e => e === tableContent5.innerText) && WAITER.style.left === "-360px" && WAITER.style.bottom === "-150px") {
+      if (orderEmojis.find(e => e === tableContent5.innerText) && WAITER.style.left === "-360px" && WAITER.style.bottom === "-145px") {
         displayOrder(Order.tableLastOrder(5))
       }
-      if (orderEmojis.find(e => e === tableContent6.innerText) && WAITER.style.left === "-120px" && WAITER.style.bottom === "-150px") {
+      if (orderEmojis.find(e => e === tableContent6.innerText) && WAITER.style.left === "-120px" && WAITER.style.bottom === "-145px") {
         displayOrder(Order.tableLastOrder(6))
       }
-      if (orderEmojis.find(e => e === tableContent7.innerText) && WAITER.style.left === "120px" && WAITER.style.bottom === "-150px") {
+      if (orderEmojis.find(e => e === tableContent7.innerText) && WAITER.style.left === "120px" && WAITER.style.bottom === "-145px") {
         displayOrder(Order.tableLastOrder(7))
       }
-      if (orderEmojis.find(e => e === tableContent8.innerText) && WAITER.style.left === "360px" && WAITER.style.bottom === "-150px") {
+      if (orderEmojis.find(e => e === tableContent8.innerText) && WAITER.style.left === "360px" && WAITER.style.bottom === "-145px") {
         displayOrder(Order.tableLastOrder(8))
       }
   }
 
   async function findBar() {
-      if (WAITER.style.left === "-540px" && WAITER.style.bottom === "150px") {
+      if (WAITER.style.left === "-560px" && WAITER.style.bottom === "135px") {
         const { value: formValues} = await Swal.fire({
             title: 'New Order',
             showCancelButton: 'true',
@@ -191,7 +191,7 @@ function moveWaiter(e) {
   }
 
 async function findRegister() {       
-    if (WAITER.style.left === "-540px" && WAITER.style.bottom === "-150px"){
+    if (WAITER.style.left === "-560px" && WAITER.style.bottom === "-145px"){
       const { value: formValues} = await Swal.fire({
         title: 'Register',
         showCancelButton: 'true',
