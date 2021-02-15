@@ -113,8 +113,9 @@ function recordUserScore() {
 
 function handleNewScore(userData) {
     currentGameId = userData.id
-    let currentUserDiv = document.getElementById('current-user-div')
-    currentUserDiv.style.display = "none"
+    let currentUserDivNow = document.getElementById('current-user-div')
+    currentUserDivNow.style.display = "none"
+    currentUserDivNow.id = "old-game"
     getUserData()
 }
 
