@@ -16,12 +16,15 @@ function startGame(e) {
     playMusic()
     tableInterval = setInterval(selectTable, 18000)
 }
-
+let tracklist = [{path: "Yummy.m4a"}, {path: "work.m4a"}, {path: "work_from_home.m4a"}, {path: "shake_it_off.m4a"}, {path: "ice_cream.m4a"}, {path: "call_me_maybe.m4a"}, {path: "bad_guy.m4a"}, ]
+  
 function playMusic() {
-  let tracklist = [{path: "yummy.m4a"}]
-  curr_track.src = tracklist[0].path
+  randomNumber = Math.floor(Math.random() * tracklist.length)
+  curr_track.src = tracklist[randomNumber].path
+  tracklist.splice(randomNumber, 1)
   curr_track.load()
   curr_track.play()
+  curr_track.addEventListener('ended', playMusic)
 }
 
 function formatGameSidebar(e) {
@@ -190,6 +193,15 @@ function orderMoreorRequestCheck(tableText) {
       if (chance === 2) {
           let tableContent = document.getElementById(`table-${table}-content`).firstChild
           tableContent.innerText = "✍️"
+          setTimeout(function() {
+            if (tableContent.innerText === "✍️") {
+              Swal.fire({
+                icon: "error",
+                text: `Ooops! You didn't deliver the check to table #${table} fast enough!`
+            })
+            addMistakes()
+            }
+          }, 40000)
       }
   }
 }
@@ -251,7 +263,7 @@ function addTipsforClosedTable(moneyTable, tableContent) {
   moneyTable.orders = []
 }
 
-function payWithCashOrCard(tableContent) {
+function payWithCashOrCard(tableContent, checkTable) {
   let chance = Math.ceil(Math.random() * 2)
   if (chance === 1) {
     tableContent.innerText = "💳"
@@ -259,6 +271,15 @@ function payWithCashOrCard(tableContent) {
   if (chance === 2) {
     tableContent.innerText = "💵"
   }
+  setTimeout(function() {
+    if (tableContent.innerText === "💵" || tableContent.innerText === "💳") {
+      Swal.fire({
+        icon: "error",
+        text: `Ooops! You didn't close out table #${checkTable.number} fast enough!`
+    })
+    addMistakes()
+    }
+  }, 40000)
 }
 
 function rectifyCheck(formValues) {
@@ -266,11 +287,12 @@ function rectifyCheck(formValues) {
     let checkTable = Table.all.find(t => t.number === parseInt(formValues[0].charAt(0)))
     let tableContent = document.getElementById(`table-${checkTable.number}-content`).firstChild
     if (tableContent.innerText === "✍️") {
+      tableContent.innerText = "..."
         Swal.fire({
             icon: "success",
             text: `The check has been delivered for table #${checkTable.number}`
         })
-        setTimeout(payWithCashOrCard.bind(null, tableContent), randomInteger(10000, 20000))
+        setTimeout(payWithCashOrCard.bind(null, tableContent, checkTable), randomInteger(10000, 20000))
     } else {
         Swal.fire({
             icon: "error",
