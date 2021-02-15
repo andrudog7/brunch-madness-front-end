@@ -14,7 +14,7 @@ function startGame(e) {
     startTimer()
     selectTable()
     playMusic()
-    tableInterval = setInterval(selectTable, 20000)
+    tableInterval = setInterval(selectTable, 18000)
 }
 
 function playMusic() {

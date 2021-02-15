@@ -181,7 +181,7 @@ function moveWaiter(e) {
                   text: "Order Fulfilled!"})
                 let tableOrderFilled = document.getElementById(`table-${thisTableOrder.table}-content`).firstChild
                 displayOrderToTable(thisTableOrder, tableOrderFilled)
-                setTimeout(removeOrder.bind(null, tableOrderFilled, thisTable, thisTableOrder), randomInteger(15000, 50000))
+                setTimeout(removeOrder.bind(null, tableOrderFilled, thisTable, thisTableOrder), randomInteger(25000, 50000))
                 compareArray = []
               }
             }
