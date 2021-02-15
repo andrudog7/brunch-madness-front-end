@@ -270,7 +270,7 @@ function rectifyCheck(formValues) {
             icon: "success",
             text: `The check has been delivered for table #${checkTable.number}`
         })
-        setTimeout(payWithCashOrCard.bind(null, tableContent), Math.ceil(Math.random() * 10000))
+        setTimeout(payWithCashOrCard.bind(null, tableContent), randomInteger(10000, 20000))
     } else {
         Swal.fire({
             icon: "error",
