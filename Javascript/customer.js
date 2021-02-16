@@ -27,6 +27,9 @@ function customerOrder(table, customer) {
     }
     let tableContent = document.getElementById(`table-${table}-content`).firstChild
     tableContent.innerText = "🤗"
+    sound_effect.src = "new_order.wav"
+    sound_effect.load()
+    sound_effect.play()
     orderFulfilledCountdown(tableContent, table) 
 }
 

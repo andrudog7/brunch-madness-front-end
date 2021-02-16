@@ -4,6 +4,7 @@ let totalMistakes = 0
 let tableInterval
 let playBtn
 let curr_track = document.createElement('audio') 
+let sound_effect = document.createElement('audio')
 
 function startGame(e) {
   if (e.target.innerText === "Play Again") {
@@ -23,6 +24,7 @@ function playMusic() {
   curr_track.src = tracklist[randomNumber].path
   tracklist.splice(randomNumber, 1)
   curr_track.load()
+  curr_track.volume = .2
   curr_track.play()
   curr_track.addEventListener('ended', playMusic)
 }
@@ -193,6 +195,9 @@ function orderMoreorRequestCheck(tableText) {
       if (chance === 2) {
           let tableContent = document.getElementById(`table-${table}-content`).firstChild
           tableContent.innerText = "✍️"
+          sound_effect.src = "check_please.wav"
+          sound_effect.load()
+          sound_effect.play()
           setTimeout(function() {
             if (tableContent.innerText === "✍️") {
               Swal.fire({
@@ -267,9 +272,15 @@ function payWithCashOrCard(tableContent, checkTable) {
   let chance = Math.ceil(Math.random() * 2)
   if (chance === 1) {
     tableContent.innerText = "💳"
+    sound_effect.src = "money.wav"
+    sound_effect.load()
+    sound_effect.play()
   }
   if (chance === 2) {
     tableContent.innerText = "💵"
+    sound_effect.src = "money.wav"
+    sound_effect.load()
+    sound_effect.play()
   }
   setTimeout(function() {
     if (tableContent.innerText === "💵" || tableContent.innerText === "💳") {
@@ -312,6 +323,9 @@ function rectifyPayment(formValues) {
             icon: "success",
             text: `Congratulations, table #${moneyTable.number} has closed out!`
         })
+        sound_effect.src = "table_close.wav"
+        sound_effect.load()
+        sound_effect.play()
         addTipsforClosedTable(moneyTable, tableContent)
         addTableServed()
         TABLES.push(moneyTable.number)
