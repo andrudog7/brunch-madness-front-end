@@ -16,7 +16,7 @@ function startGame(e) {
     startTimer()
     selectTable()
     playMusic()
-    tableInterval = setInterval(selectTable, 18000)
+    tableInterval = setInterval(selectTable, 16000)
 }
 let tracklist = [{path: "Yummy.m4a"}, {path: "work.m4a"}, {path: "work_from_home.m4a"}, {path: "shake_it_off.m4a"}, {path: "ice_cream.m4a"}, {path: "call_me_maybe.m4a"}, {path: "bad_guy.m4a"}, ]
   

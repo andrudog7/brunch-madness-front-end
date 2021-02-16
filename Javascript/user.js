@@ -51,6 +51,7 @@ function createUserScores(userInfo) {
         currentUser = userInfo.username
         currentUserId = userInfo.id
         let h3 = document.createElement('h3')
+        h3.id = "username-text"
         h3.innerText = `${userInfo.username}`
         h3.style.textAlign = "center"
         h3.style.marginTop = "40px"

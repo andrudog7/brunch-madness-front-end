@@ -19,17 +19,20 @@ function loadCustomerData(customersArray) {
     })
 }
 function numberOfOrderItems() {
-    if (parseInt(document.getElementById('min').innerText) > 7) {
+    if (parseInt(document.getElementById('min').innerText) > 8) {
+        return 10
+    }
+    if (parseInt(document.getElementById('min').innerText) > 6) {
+        return 8
+    }
+    if (parseInt(document.getElementById('min').innerText) > 4) {
         return 7
     }
-    if (parseInt(document.getElementById('min').innerText) > 5) {
+    if (parseInt(document.getElementById('min').innerText) > 2) {
         return 6
     }
-    if (parseInt(document.getElementById('min').innerText) > 3) {
-        return 5
-    }
     if (parseInt(document.getElementById('min').innerText) > 1) {
-        return 4
+        return 5
     } else {
         return 3
     }

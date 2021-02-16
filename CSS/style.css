@@ -212,3 +212,7 @@ h1#game-title {
   #how-to {
       margin-top: 10px;
   }
+
+  #username-text {
+    text-shadow: 2px 2px 8px #3e8e41;
+  }
