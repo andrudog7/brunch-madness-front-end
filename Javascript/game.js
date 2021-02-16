@@ -5,6 +5,7 @@ let tableInterval
 let playBtn
 let curr_track = document.createElement('audio') 
 let sound_effect = document.createElement('audio')
+sound_effect.volume = .3
 
 function startGame(e) {
   if (e.target.innerText === "Play Again") {
@@ -24,7 +25,7 @@ function playMusic() {
   curr_track.src = tracklist[randomNumber].path
   tracklist.splice(randomNumber, 1)
   curr_track.load()
-  curr_track.volume = .2
+  curr_track.volume = .1
   curr_track.play()
   curr_track.addEventListener('ended', playMusic)
 }
