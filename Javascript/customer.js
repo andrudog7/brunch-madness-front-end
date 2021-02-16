@@ -18,9 +18,25 @@ function loadCustomerData(customersArray) {
         new Customer( name = customer.name, id = customer.id)
     })
 }
+function numberOfOrderItems() {
+    if (parseInt(document.getElementById('min').innerText) > 7) {
+        return 7
+    }
+    if (parseInt(document.getElementById('min').innerText) > 5) {
+        return 6
+    }
+    if (parseInt(document.getElementById('min').innerText) > 3) {
+        return 5
+    }
+    if (parseInt(document.getElementById('min').innerText) > 1) {
+        return 4
+    } else {
+        return 3
+    }
+}
 
 function customerOrder(table, customer) {
-    numberOfItems = Math.floor(Math.random() * 6)
+    numberOfItems = Math.floor(Math.random() * numberOfOrderItems())
     let order = new Order(table = table, customer = customer)
     for (i = 0; i <= numberOfItems; i++) {
         order.items.push(Item.all[Math.floor(Math.random() * 9)])
