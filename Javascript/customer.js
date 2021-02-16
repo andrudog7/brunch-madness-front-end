@@ -52,3 +52,60 @@ function customerOrder(table, customer) {
     orderFulfilledCountdown(tableContent, table) 
 }
 
+function orderMoreorRequestCheck(tableText) {
+    let customer1 = Customer.all.find(e => e.name === tableText.innerText)
+    let completedOrders = Table.all[table - 1].orders
+    if (completedOrders.length >= 1) {
+        let chance = Math.ceil(Math.random() * 2)
+        if (chance === 1) {
+           customerOrder(table, customer1) 
+        }
+        if (chance === 2) {
+            let tableContent = document.getElementById(`table-${table}-content`).firstChild
+            tableContent.innerText = "✍️"
+            sound_effect.src = "check_please.wav"
+            sound_effect.load()
+            sound_effect.play()
+            setTimeout(function() {
+              if (tableContent.innerText === "✍️") {
+                Swal.fire({
+                  icon: "error",
+                  text: `Ooops! You didn't deliver the check to table #${table} fast enough!`
+              })
+              addMistakes()
+              }
+            }, 40000)
+        }
+    }
+  }
+  
+  function selectCustomer() {
+      let customer = Customer.all[Math.floor(Math.random() * 12)]
+      return customer
+  }
+
+  function payWithCashOrCard(tableContent, checkTable) {
+    let chance = Math.ceil(Math.random() * 2)
+    if (chance === 1) {
+      tableContent.innerText = "💳"
+      sound_effect.src = "money.wav"
+      sound_effect.load()
+      sound_effect.play()
+    }
+    if (chance === 2) {
+      tableContent.innerText = "💵"
+      sound_effect.src = "money.wav"
+      sound_effect.load()
+      sound_effect.play()
+    }
+    setTimeout(function() {
+      if (tableContent.innerText === "💵" || tableContent.innerText === "💳") {
+        Swal.fire({
+          icon: "error",
+          text: `Ooops! You didn't close out table #${checkTable.number} fast enough!`
+      })
+      addMistakes()
+      }
+    }, 40000)
+  }
+

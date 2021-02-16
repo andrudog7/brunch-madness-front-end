@@ -31,3 +31,20 @@ function calculateTotalTips(table) {
     tipsEarned = document.getElementById('tipCount')
     tipsEarned.innerText = `Tips: $${totalTips+=tableTips}`
 }
+
+let TABLES = [1, 2, 3, 4, 5, 6, 7, 8]
+
+function selectTable() {
+    let randomNum = Math.floor(Math.random() * TABLES.length)
+    table = TABLES[randomNum]
+    TABLES.splice(randomNum, 1)
+    const tableText = document.getElementById(`table-${table}`).children[0]
+
+    if (tableText.innerText === "") {
+      newCustomer = selectCustomer()
+      tableText.innerText = newCustomer.name
+      customerOrder(table, newCustomer)
+    } else {
+      orderMoreorRequestCheck(tableText)
+    }
+}

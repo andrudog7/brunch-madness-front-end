@@ -108,115 +108,6 @@ function formatGameSidebar(e) {
   userArea.insertBefore(currentGameDiv, userArea.children[1].nextSibling)
 }
 
-// Timer Function
-let x
-
-function startTimer() {
-    x = setInterval(timer, 10);
-  } 
-
-  function stopTimer() {
-    clearInterval(x);
-  }
-
-    let milisec = 0;
-    let sec = 0; 
-    let min = 0;
-
-    let miliSecOut = 0;
-    let secOut = 0;
-    let minOut = 0;
-
-function timer() {
-  miliSecOut = checkTime(milisec);
-  secOut = checkTime(sec);
-  minOut = checkTime(min);
-
-  milisec = ++milisec;
-
-  if (milisec === 100) {
-    milisec = 0;
-    sec = ++sec;
-  }
-
-  if (sec == 60) {
-    min = ++min;
-    sec = 0;
-  }
-
-  document.getElementById("milisec").innerHTML = miliSecOut;
-  document.getElementById("sec").innerHTML = secOut + ".";
-  document.getElementById("min").innerHTML = minOut + ":";
-}
-
-function checkTime(i) {
-  if (i < 10) {
-    i = "0" + i;
-  }
-  return i;
-}
-
-function resetTimer() {
-
-  milisec = 0;
-  sec = 0;
-  min = 0
-
-  document.getElementById("milisec").innerHTML = "00";
-  document.getElementById("sec").innerHTML = "00";
-  document.getElementById("min").innerHTML = "00";
-
-}
-
-let TABLES = [1, 2, 3, 4, 5, 6, 7, 8]
-
-function selectTable() {
-    let randomNum = Math.floor(Math.random() * TABLES.length)
-    table = TABLES[randomNum]
-    TABLES.splice(randomNum, 1)
-    const tableText = document.getElementById(`table-${table}`).children[0]
-
-    if (tableText.innerText === "") {
-      newCustomer = selectCustomer()
-      tableText.innerText = newCustomer.name
-      customerOrder(table, newCustomer)
-    } else {
-      orderMoreorRequestCheck(tableText)
-    }
-}
-
-function orderMoreorRequestCheck(tableText) {
-  let customer1 = Customer.all.find(e => e.name === tableText.innerText)
-  let completedOrders = Table.all[table - 1].orders
-  if (completedOrders.length >= 1) {
-      let chance = Math.ceil(Math.random() * 2)
-      if (chance === 1) {
-         customerOrder(table, customer1) 
-      }
-      if (chance === 2) {
-          let tableContent = document.getElementById(`table-${table}-content`).firstChild
-          tableContent.innerText = "✍️"
-          sound_effect.src = "check_please.wav"
-          sound_effect.load()
-          sound_effect.play()
-          setTimeout(function() {
-            if (tableContent.innerText === "✍️") {
-              Swal.fire({
-                icon: "error",
-                text: `Ooops! You didn't deliver the check to table #${table} fast enough!`
-            })
-            addMistakes()
-            }
-          }, 40000)
-      }
-  }
-}
-
-function selectCustomer() {
-    let customer = Customer.all[Math.floor(Math.random() * 12)]
-    return customer
-}
-
 function addMistakes() {
   thisGameMistakes = document.getElementById('mistakes')
   thisGameMistakes.innerText = `Mistakes: ${totalMistakes+=1}`
@@ -267,31 +158,6 @@ function addTipsforClosedTable(moneyTable, tableContent) {
   paidTableText.innerText = ""
   calculateTotalTips(moneyTable)
   moneyTable.orders = []
-}
-
-function payWithCashOrCard(tableContent, checkTable) {
-  let chance = Math.ceil(Math.random() * 2)
-  if (chance === 1) {
-    tableContent.innerText = "💳"
-    sound_effect.src = "money.wav"
-    sound_effect.load()
-    sound_effect.play()
-  }
-  if (chance === 2) {
-    tableContent.innerText = "💵"
-    sound_effect.src = "money.wav"
-    sound_effect.load()
-    sound_effect.play()
-  }
-  setTimeout(function() {
-    if (tableContent.innerText === "💵" || tableContent.innerText === "💳") {
-      Swal.fire({
-        icon: "error",
-        text: `Ooops! You didn't close out table #${checkTable.number} fast enough!`
-    })
-    addMistakes()
-    }
-  }, 40000)
 }
 
 function rectifyCheck(formValues) {
@@ -345,20 +211,6 @@ function removeOrder(tableOrderFilled, thisTable, thisTableOrder) {
   tableOrderFilled.innerText = `#${thisTable}`
   TABLES.push(thisTable)
   Table.all.find(table => table.number === thisTable).orders.push(thisTableOrder)
-}
-
-function displayOrderToTable(thisTableOrder, tableOrderFilled) {
-  let emojiOrder = ""
-  if (thisTableOrder.items.length === 1) {
-    addTips()
-    tableOrderFilled.innerText = thisTableOrder.items[0].icon
-  } else {
-    thisTableOrder.items.forEach(item => emojiOrder += `${item.icon}`)
-    tableOrderFilled.innerText = emojiOrder
-    let tablesServed
-    let tipsEarned 
-    addTips()
-  }
 }
 
 function addTips() {

@@ -11,7 +11,7 @@ class Order {
         let displayOrderContent = ""
         uniqNames.forEach(item => {
             let count = this.items.filter(orderItem => orderItem === item).length
-            displayOrderContent += `${count} ${item.name}, `
+            displayOrderContent += `${count} ${item.name} - $${item.price}, `
         })
           return displayOrderContent.split(",").splice(0, displayOrderContent.split(",").length - 1)
     }
@@ -75,3 +75,17 @@ function orderFulfilledCountdown(tableContent, table) {
     }
 , 12000)
 }
+
+function displayOrderToTable(thisTableOrder, tableOrderFilled) {
+    let emojiOrder = ""
+    if (thisTableOrder.items.length === 1) {
+      addTips()
+      tableOrderFilled.innerText = thisTableOrder.items[0].icon
+    } else {
+      thisTableOrder.items.forEach(item => emojiOrder += `${item.icon}`)
+      tableOrderFilled.innerText = emojiOrder
+      let tablesServed
+      let tipsEarned 
+      addTips()
+    }
+  }
