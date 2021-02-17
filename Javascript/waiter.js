@@ -178,12 +178,12 @@ function moveWaiter(e) {
                   text: "Ouch! You got the order wrong!"})
                   addMistakes()
               } else {
-                Swal.fire({
-                  icon: "success",
-                  text: "Order Fulfilled!"})
+                // Swal.fire({
+                //   icon: "success",
+                //   text: "Order Fulfilled!"})
                 let tableOrderFilled = document.getElementById(`table-${thisTableOrder.table}-content`).firstChild
                 displayOrderToTable(thisTableOrder, tableOrderFilled)
-                sound_effect.src = "cocktail_shaker.mp3"
+                sound_effect.src = "yaass.m4a"
                 sound_effect.load()
                 sound_effect.volume = .5
                 sound_effect.play()

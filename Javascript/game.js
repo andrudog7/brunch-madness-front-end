@@ -166,10 +166,10 @@ function rectifyCheck(formValues) {
     let tableContent = document.getElementById(`table-${checkTable.number}-content`).firstChild
     if (tableContent.innerText === "✍️") {
       tableContent.innerText = "..."
-        Swal.fire({
-            icon: "success",
-            text: `The check has been delivered for table #${checkTable.number}`
-        })
+        // Swal.fire({
+        //     icon: "success",
+        //     text: `The check has been delivered for table #${checkTable.number}`
+        // })
         setTimeout(payWithCashOrCard.bind(null, tableContent, checkTable), randomInteger(10000, 20000))
     } else {
         Swal.fire({
@@ -186,10 +186,10 @@ function rectifyPayment(formValues) {
     let moneyTable = Table.all.find(t => t.number === parseInt(formValues[1].charAt(0)))
     let tableContent = document.getElementById(`table-${moneyTable.number}-content`).firstChild
     if ((tableContent.innerText === "💵") || (tableContent.innerText === "💳")) {
-        Swal.fire({
-            icon: "success",
-            text: `Congratulations, table #${moneyTable.number} has closed out!`
-        })
+        // Swal.fire({
+        //     icon: "success",
+        //     text: `Congratulations, table #${moneyTable.number} has closed out!`
+        // })
         sound_effect.src = "table_close.wav"
         sound_effect.load()
         sound_effect.play()
@@ -208,7 +208,7 @@ function rectifyPayment(formValues) {
 }
 
 function removeOrder(tableOrderFilled, thisTable, thisTableOrder) {
-  tableOrderFilled.innerText = `#${thisTable}`
+  tableOrderFilled.innerText = `${thisTable}`
   TABLES.push(thisTable)
   Table.all.find(table => table.number === thisTable).orders.push(thisTableOrder)
 }
