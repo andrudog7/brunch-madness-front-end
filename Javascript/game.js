@@ -53,7 +53,8 @@ function formatGameSidebar(e) {
   gameTips.id = "tipCount"
   gameTips.style.marginTop = "5px"
   gameTips.style.marginBottom = "5px"
-  gameTips.style.fontSize = "24px"
+  gameTips.style.fontSize = "19px"
+  gameTips.style.marginLeft = "8px"
   gameTips.style.textAlign = "justify"
   gameTips.innerText = `Tips: $0`
 
@@ -62,7 +63,8 @@ function formatGameSidebar(e) {
   gameTablesServed.id = "tableCount"
   gameTablesServed.style.marginTop = "5px"
   gameTablesServed.style.marginBottom = "5px"
-  gameTablesServed.style.fontSize = "24px"
+  gameTablesServed.style.fontSize = "19px"
+  gameTablesServed.style.marginLeft = "8px"
   gameTablesServed.style.textAlign = "justify"
   gameTablesServed.innerText = `Tables Served: 0`
 
@@ -71,7 +73,8 @@ function formatGameSidebar(e) {
   gameMistakes.id = "mistakes"
   gameMistakes.style.marginTop = "5px"
   gameMistakes.style.marginBottom = "5px"
-  gameMistakes.style.fontSize = "24px"
+  gameMistakes.style.marginLeft = "8px"
+  gameMistakes.style.fontSize = "19px"
   gameMistakes.style.textAlign = "justify"
   gameMistakes.innerText = `Mistakes: 0`
 
@@ -87,9 +90,9 @@ function formatGameSidebar(e) {
   timerMinute.id = "min"
   timerMinute.innerText = "00:"
   gameDuration.innerText = "Time: "
-  gameDuration.style.fontSize = "24px"
+  gameDuration.style.fontSize = "19px"
   gameDuration.style.textAlign = "justify"
-  gameDuration.style.marginLeft = "0px"
+  gameDuration.style.marginLeft = "8px"
   gameDuration.style.marginBottom = "5px"
   gameDuration.style.marginTop = "15px"
   gameDuration.append(timerMinute)

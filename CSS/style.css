@@ -6,7 +6,7 @@ h1#game-title {
 }
 
 #sidebar {
-    height: 643px;
+    height: 670px;
     width: 15%;
     position: absolute;
     left: 0;
@@ -151,7 +151,7 @@ h1#game-title {
 #user-info ol {
     font-size: 16px;
     padding: 8px;
-    margin-left: 31px;
+    margin-left: 18px;
 }
 
 #login-form {
@@ -215,4 +215,5 @@ h1#game-title {
 
   #username-text {
     text-shadow: 2px 2px 8px #3e8e41;
+    margin-top: 35px
   }

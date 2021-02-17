@@ -59,14 +59,14 @@ function createUserScores(userInfo) {
         userInfoDiv.append(h3)
     }
 
-    let h5 = document.createElement('h5')
-    h5.innerText = "My High Scores"
-    h5.style.textAlign = "center"
-    h5.style.margin = "2px"
-    h5.style.marginTop = "8px"
+    let h4 = document.createElement('h4')
+    h4.innerText = "My High Scores"
+    h4.style.textAlign = "center"
+    h4.style.margin = "2px"
+    h4.style.marginTop = "8px"
     
     userInfoDiv.append(currentUserDiv)
-    currentUserDiv.append(h5)
+    currentUserDiv.append(h4)
     if (userInfo.highest_tips !== []) {
         userInfo.highest_tips.forEach(score => {
         let li = document.createElement('li')
