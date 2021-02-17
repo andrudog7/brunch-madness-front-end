@@ -159,7 +159,7 @@ function moveWaiter(e) {
             if (tableOrders.length === 0) {
               Swal.fire({
                 icon: "error",
-                text: `Ouch! Table #${thisTable} doesn't have any orders!`})
+                text: `Ouch! Table ${thisTable} doesn't have any orders!`})
                 let thisGameMistakes
                 addMistakes()
             } else {
@@ -206,8 +206,8 @@ async function findRegister() {
       const { value: formValues} = await Swal.fire({
         title: 'Register',
         showCancelButton: 'true',
-        html: `<label for="check"style="width:200px;display:inline-block;padding:8px">Give Check to:</label><select name="check" id="check"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>` +
-        `<label for="money"style="width:200px;display:inline-block;padding:8px">Close Out:</label><select name="money" id="money"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>`,
+        html: `<label for="check"style="width:150px;display:inline-block;padding:8px">Check to Table:</label><input type="text" name="check" id="check" placeholder="0" size="1"><br>` +
+        `<label for="money"style="width:150px;display:inline-block;padding:8px">Close Out:</label><input type="text" name="money" id="money" placeholder="0" size="1">`,
         focusConfirm: false,
         preConfirm: () => {
           return [
@@ -217,8 +217,12 @@ async function findRegister() {
         }
       })
           if (formValues) {
-            rectifyCheck(formValues)
-            rectifyPayment(formValues)
+            if (formValues[0].charAt(0) !== "C") {
+              rectifyCheck(formValues)
+            }
+            if (formValues[1].charAt(0) !== "M") {
+              rectifyPayment(formValues)
+            }
           }
     }
   } 

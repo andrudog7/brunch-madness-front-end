@@ -156,7 +156,7 @@ function checkGameOver() {
 }
 
 function addTipsforClosedTable(moneyTable, tableContent) {
-  tableContent.innerText = `#${moneyTable.number}`
+  tableContent.innerText = `${moneyTable.number}`
   paidTableText = document.getElementById(`table-${moneyTable.number}`).children[0]
   paidTableText.innerText = ""
   calculateTotalTips(moneyTable)
@@ -164,7 +164,7 @@ function addTipsforClosedTable(moneyTable, tableContent) {
 }
 
 function rectifyCheck(formValues) {
-  if (formValues[0].charAt(0) !== "S") {
+  if (formValues[0].charAt(0) !== "0") {
     let checkTable = Table.all.find(t => t.number === parseInt(formValues[0].charAt(0)))
     let tableContent = document.getElementById(`table-${checkTable.number}-content`).firstChild
     if (tableContent.innerText === "✍️") {
@@ -185,7 +185,7 @@ function rectifyCheck(formValues) {
 }
 
 function rectifyPayment(formValues) {
-  if (formValues[1].charAt(0) !== "S") {
+  if (formValues[1].charAt(0) !== "0") {
     let moneyTable = Table.all.find(t => t.number === parseInt(formValues[1].charAt(0)))
     let tableContent = document.getElementById(`table-${moneyTable.number}-content`).firstChild
     if ((tableContent.innerText === "💵") || (tableContent.innerText === "💳")) {
@@ -203,7 +203,7 @@ function rectifyPayment(formValues) {
     } else {
         Swal.fire({
             icon: "error",
-            text: `Ooops! Table #${moneyTable.number} has not paid yet!`
+            text: `Ooops! Table ${moneyTable.number} has not paid yet!`
         })
         addMistakes()
     }

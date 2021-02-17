@@ -83,7 +83,11 @@ function displayOrderToTable(thisTableOrder, tableOrderFilled) {
       tableOrderFilled.innerText = thisTableOrder.items[0].icon
     } else {
       thisTableOrder.items.forEach(item => emojiOrder += `${item.icon}`)
-      tableOrderFilled.innerText = emojiOrder
+      if (emojiOrder.length > 6) {
+          tableOrderFilled.innerText = emojiOrder.substring(0, 6)
+      } else {
+         tableOrderFilled.innerText = emojiOrder 
+      }
       let tablesServed
       let tipsEarned 
       addTips()
