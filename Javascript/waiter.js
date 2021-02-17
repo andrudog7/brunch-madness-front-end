@@ -183,6 +183,7 @@ function moveWaiter(e) {
                 //   text: "Order Fulfilled!"})
                 let tableOrderFilled = document.getElementById(`table-${thisTableOrder.table}-content`).firstChild
                 displayOrderToTable(thisTableOrder, tableOrderFilled)
+                debugger
                 sound_effect.src = "yaass.m4a"
                 sound_effect.load()
                 sound_effect.volume = .5

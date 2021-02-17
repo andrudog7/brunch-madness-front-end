@@ -78,16 +78,19 @@ function orderFulfilledCountdown(tableContent, table) {
 
 function displayOrderToTable(thisTableOrder, tableOrderFilled) {
     let emojiOrder = ""
+    debugger
     if (thisTableOrder.items.length === 1) {
       addTips()
       tableOrderFilled.innerText = thisTableOrder.items[0].icon
     } else {
       thisTableOrder.items.forEach(item => emojiOrder += `${item.icon}`)
-      if (emojiOrder.length > 6) {
-          tableOrderFilled.innerText = emojiOrder.substring(0, 6)
+      debugger
+      if (emojiOrder.length > 12) {
+          tableOrderFilled.innerText = emojiOrder.substring(0, 12)
       } else {
          tableOrderFilled.innerText = emojiOrder 
       }
+      debugger
       let tablesServed
       let tipsEarned 
       addTips()
