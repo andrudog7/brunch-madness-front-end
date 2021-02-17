@@ -24,7 +24,7 @@ function loadItemData(itemsArray) {
 function barItemsOrdered(formValues) {
     let barOrderItems = []
     for (i=0;i<formValues.length - 1;i++) {
-        if (formValues[i].charAt(0) !== "S") {
+        if (formValues[i].charAt(0) !== "0") {
             for (t=0;t<parseInt(formValues[i].charAt(0), 10);t++) {
                 barOrderItems.push(Item.all.find(e => e.name === formValues[i].slice(1)))
                 }

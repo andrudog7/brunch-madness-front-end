@@ -80,7 +80,7 @@ function orderMoreorRequestCheck(tableText) {
   }
   
   function selectCustomer() {
-      let customer = Customer.all[Math.floor(Math.random() * 12)]
+      let customer = Customer.all[Math.floor(Math.random() * Customer.all.length)]
       return customer
   }
 

@@ -123,26 +123,26 @@ function moveWaiter(e) {
         const { value: formValues} = await Swal.fire({
             title: 'New Order',
             showCancelButton: 'true',
-            html: `<label for="table"style="font-weight:bold;width:200px;display:inline-block;padding:8px">Table #</label><select name="Table" id="Table"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>` +
-            `<label for="Beer"style="width:200px;display:inline-block;padding:2px">Beer:</label><select name="Beer" id="Beer"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="Bloody Mary"style="width:200px;display:inline-block;padding:2px">Bloody Mary:</label><select name="Bloody Mary" id="Bloody Mary"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="Bourbon Cocktail"style="width:200px;display:inline-block;padding:2px">Bourbon Cocktail:</label><select name="Bourbon Brunch Cocktail" id="Bourbon Brunch Cocktail"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="Coffee"style="width:200px;display:inline-block;padding:2px">Coffee:</label><select name="Coffee" id="Coffee"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="Martini"style="width:200px;display:inline-block;padding:2px">Martini:</label><select name="House Martini" id="House Martini"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="Mimosa"style="width:200px;display:inline-block;padding:2px">Mimosa:</label><select name="Mimosa" id="Mimosa"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="Sangria"style="width:200px;display:inline-block;padding:2px">Sangria:</label><select name="Sangria" id="Sangria"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="Pitcher of Beer"style="width:200px;display:inline-block;padding:2px">Pitcher of Beer:</label><select name="Pitcher of Beer" id="Pitcher of Beer"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>` +
-            `<label for="Pitcher of Mimosa"style="width:200px;display:inline-block;padding:2px">Pitcher of Mimosa:</label><select name="Pitcher of Mimosa" id="Pitcher of Mimosa"><option value="Select">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>`,
+            html: `<label for="table"style="font-weight:bold;width:150px;display:inline-block;padding:8px;font-size:20px">Table #</label><input type="text" id="Table" name="Table" size="1" placeholder="0"><br>` +
+            `<label for="Beer"style="width:150px;display:inline-block;padding:2px">Beer:</label><input type="text" name="Beer" id="Beer" size="1" placeholder="0"><br>` +
+            `<label for="Bloody Mary"style="width:150px;display:inline-block;padding:2px">Bloody Mary:</label><input type="text" name="Bloody Mary" id="Bloody Mary" size="1"placeholder="0"><br>` +
+            `<label for="Bourbon Cocktail"style="width:150px;display:inline-block;padding:2px">Bourbon Cocktail:</label><input type="text" name="Bourbon Cocktail" id="Bourbon Cocktail" size="1" placeholder="0"><br>` +
+            `<label for="Coffee"style="width:150px;display:inline-block;padding:2px">Coffee:</label><input type="text" name="Coffee" id="Coffee" size="1" placeholder="0"><br>` +
+            `<label for="Martini"style="width:150px;display:inline-block;padding:2px">Martini:</label><input type="text" name="House Martini" id="House Martini" size="1" placeholder="0"><br>` +
+            `<label for="Mimosa"style="width:150px;display:inline-block;padding:2px">Mimosa:</label><input type="text" name="Mimosa" id="Mimosa" size="1" placeholder="0"><br>` +
+            `<label for="Sangria"style="width:150px;display:inline-block;padding:2px">Sangria:</label><input type="text" name="Sangria" id="Sangria" size="1" placeholder="0"><br>` +
+            `<label for="Pitcher of Beer"style="width:150px;display:inline-block;padding:2px">Pitcher of Beer:</label><input type="text" name="Pitcher of Beer" id="Pitcher of Beer" size="1" placeholder="0"><br>` +
+            `<label for="Pitcher of Mimosa"style="width:150px;display:inline-block;padding:2px">Pitcher of Mimosa:</label><input type="text" name="Pitcher of Mimosa" id="Pitcher of Mimosa" size="1" placeholder="0"><br>`,
             focusConfirm: false,
             preConfirm: () => {
               return [
                 document.getElementById('Mimosa').value + "Mimosa",
                 document.getElementById('Bloody Mary').value + "Bloody Mary",
-                document.getElementById('Coffee').value+ "Coffee",
+                document.getElementById('Coffee').value + "Coffee",
                 document.getElementById('Beer').value + "Beer",
                 document.getElementById('House Martini').value + "Martini",
                 document.getElementById('Sangria').value + "Sangria",
-                document.getElementById('Bourbon Brunch Cocktail').value + "Bourbon Cocktail",
+                document.getElementById('Bourbon Cocktail').value + "Bourbon Cocktail",
                 document.getElementById('Pitcher of Mimosa').value + "Pitcher of Mimosa",
                 document.getElementById('Pitcher of Beer').value + "Pitcher of Beer",
                 document.getElementById('Table').value
