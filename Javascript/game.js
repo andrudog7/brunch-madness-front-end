@@ -11,12 +11,13 @@ function startGame(e) {
   if (e.target.innerText === "Play Again") {
       clearOldGame()
       resetTimer()
+      TABLES = [1, 2, 3, 4, 5, 6, 7, 8]
     }
     formatGameSidebar(e)
     startTimer()
     selectTable()
     playMusic()
-    tableInterval = setInterval(selectTable, 16000)
+    tableInterval = setInterval(selectTable, 15000)
 }
 let tracklist = [{path: "Yummy.m4a"}, {path: "work.m4a"}, {path: "work_from_home.m4a"}, {path: "shake_it_off.m4a"}, {path: "ice_cream.m4a"}, {path: "call_me_maybe.m4a"}, {path: "bad_guy.m4a"}, ]
   
@@ -132,14 +133,14 @@ function checkGameOver() {
   let table6 = document.getElementById('table-6-content').children[0]
   let table7 = document.getElementById('table-7-content').children[0]
   let table8 = document.getElementById('table-8-content').children[0]
-  table1.innerText = "#1"
-  table2.innerText = "#2"
-  table3.innerText = "#3"
-  table4.innerText = "#4"
-  table5.innerText = "#5"
-  table6.innerText = "#6"
-  table7.innerText = "#7"
-  table8.innerText = "#8"
+  table1.innerText = "1"
+  table2.innerText = "2"
+  table3.innerText = "3"
+  table4.innerText = "4"
+  table5.innerText = "5"
+  table6.innerText = "6"
+  table7.innerText = "7"
+  table8.innerText = "8"
     playBtn.style.display = "block"
     playBtn.innerText = "Play Again"
   

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 function fetchHighScores() {
-    fetch(`http://127.0.0.1:3000/high_scores`)
+    fetch(`http://brunch-madness.herokuapp.com/high_scores`)
     .then(response => response.json())
     .then(highScores => displayHighScores(highScores))
 }
@@ -41,8 +41,8 @@ howToPlay.addEventListener('click', displayInstructions)
 function displayInstructions() {
     Swal.fire({
         icon: "info",
-        title: "How to Play Brunch Madness",
-        html: "<p>Brunch Madness is a game where you act as the waiter during a very busy brunch period.  Make 3 mistakes and you're fired!<br><br>Use the following keys to move around the restaurant:<br>⬇️➡️⬅️⬆️<br><br>When a customer has placed an order, an emoji will appear on their table.  Move the waiter to the emoji to access the order.  Then move the waiter to the bar entrance to fulfill the order.  You have 60 seconds to complete the order or it will count as a mistake.  The emoji expression will change with time:<br><br>🤗 - Initial order has been placed<br>😬 - Customer is still happy and waiting<br>🙄 - Getting slightly annoyed by the waiting<br>😡 - The customer is getting angry (40 seconds have passed)<br>🤬 - The customer is really upset and you have 10 seconds to complete the order<br><br>Once an order has been filled, the customer will either choose to place another order or signal they are ready for the check with ✍️.  You will need to access the register to give the check and receive payment before the customer gets impatient!<br><br>Score: You get a $1 tip for every order you get right.  Once a table has closed out you will also get 20% of their total bill added to your tips.<br><br>Try to get a high score by making the most in tips!</p>"})
+        title: "How to Play",
+        html: "<p>Object: Serve the customers as fast as possible.  Make 3 mistakes and you’re fired.<br><br>Use the ⬇️➡️⬅️⬆️ keys to move the waiter around the restaurant.<br><br>Run to 🤗 to take a new order. Run to the bar entrance to submit the order by entering the table number and drinks.  Don’t let the customers get too angry. 🤬 means you have 10 seconds left to complete an order or it’s a mistake!<br><br>When ✍️, 💵, or 💳 appear at a table, run to the register to either deliver the check or close out a table.  Don’t leave the customers waiting!<br><br>Score: $1 tip for every correct order plus 20% tips for every closed table.</p>"})
 }
 
 

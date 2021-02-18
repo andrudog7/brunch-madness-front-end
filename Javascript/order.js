@@ -83,14 +83,13 @@ function displayOrderToTable(thisTableOrder, tableOrderFilled) {
       addTips()
       tableOrderFilled.innerText = thisTableOrder.items[0].icon
     } else {
-      thisTableOrder.items.forEach(item => emojiOrder += `${item.icon}`)
-      debugger
-      if (emojiOrder.length > 12) {
-          tableOrderFilled.innerText = emojiOrder.substring(0, 12)
-      } else {
-         tableOrderFilled.innerText = emojiOrder 
+      if (thisTableOrder.items.length > 6) {
+        emojiOrder += `${thisTableOrder.items[0].icon}${thisTableOrder.items[1].icon}${thisTableOrder.items[2].icon}${thisTableOrder.items[3].icon}${thisTableOrder.items[4].icon}${thisTableOrder.items[5].icon}`
+        tableOrderFilled.innerText = emojiOrder
+    } else {
+        thisTableOrder.items.forEach(item => emojiOrder += `${item.icon}`)
+        tableOrderFilled.innerText = emojiOrder 
       }
-      debugger
       let tablesServed
       let tipsEarned 
       addTips()

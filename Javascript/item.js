@@ -10,7 +10,7 @@ class Item {
 }
 
 function fetchItems(){
-    fetch(`http://127.0.0.1:3000/items`)
+    fetch(`http://brunch-madness.herokuapp.com/items`)
     .then(response => response.json())
     .then(res => loadItemData(res))
 }

@@ -8,7 +8,7 @@ class Customer {
 }
 
 function fetchCustomers(){
-    fetch(`http://127.0.0.1:3000/customers`)
+    fetch(`http://brunch-madness.herokuapp.com/customers`)
     .then(response => response.json())
     .then(res => loadCustomerData(res))
 }
@@ -23,16 +23,16 @@ function numberOfOrderItems() {
         return 10
     }
     if (parseInt(document.getElementById('min').innerText) > 6) {
-        return 8
+        return 9
     }
     if (parseInt(document.getElementById('min').innerText) > 4) {
-        return 7
+        return 8
     }
     if (parseInt(document.getElementById('min').innerText) > 2) {
-        return 6
+        return 7
     }
     if (parseInt(document.getElementById('min').innerText) > 1) {
-        return 5
+        return 6
     } else {
         return 3
     }
