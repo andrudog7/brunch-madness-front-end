@@ -7,7 +7,7 @@ h1#game-title {
 
 #sidebar {
     height: 670px;
-    width: 15%;
+    width: 212px;
     position: absolute;
     left: 0;
     top: 0;
@@ -60,7 +60,7 @@ h1#game-title {
 
     .restaurant {
         display: none;
-        width: 87%;
+        width: 1200px;
         text-align: center;
         background-image: url("concretefloor.png");
         background-size: cover;
@@ -82,6 +82,8 @@ h1#game-title {
 
  .root {
      display: inline;
+     width: 90%;
+     height: 90%;
  }
 
  #table-1 h4, #table-2 h4, #table-3 h4, #table-4 h4, #table-5 h4, #table-6 h4, #table-7 h4, #table-8 h4 {
