@@ -16,7 +16,7 @@ Score: $1 tip for every correct order plus 20% tips for every closed table.
 ACCESS:
 
 The backend for this game is hosted on Heroku and the front end is available at 
-brunchmadness.github.io/HTML.  You can go to the website for access to play the game.
+brunchmadness.github.io/HTML.  It is recommended you use Google Chrome as the browser to access the website in order to play.
 
 SUPPORT:
 Contact Andrew at waverider826@yahoo.com for support.
