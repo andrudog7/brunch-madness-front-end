@@ -46,7 +46,7 @@ function customerOrder(table, customer) {
     }
     let tableContent = document.getElementById(`table-${table}-content`).firstChild
     tableContent.innerText = "🤗"
-    sound_effect.src = "new_order.wav"
+    sound_effect.src = "HTML/new_order.wav"
     sound_effect.load()
     sound_effect.play()
     orderFulfilledCountdown(tableContent, table) 
@@ -63,7 +63,7 @@ function orderMoreorRequestCheck(tableText) {
         if (chance === 2) {
             let tableContent = document.getElementById(`table-${table}-content`).firstChild
             tableContent.innerText = "✍️"
-            sound_effect.src = "check_please.wav"
+            sound_effect.src = "HTML/check_please.wav"
             sound_effect.load()
             sound_effect.play()
             setTimeout(function() {
@@ -88,13 +88,13 @@ function orderMoreorRequestCheck(tableText) {
     let chance = Math.ceil(Math.random() * 2)
     if (chance === 1) {
       tableContent.innerText = "💳"
-      sound_effect.src = "money.wav"
+      sound_effect.src = "HTML/money.wav"
       sound_effect.load()
       sound_effect.play()
     }
     if (chance === 2) {
       tableContent.innerText = "💵"
-      sound_effect.src = "money.wav"
+      sound_effect.src = "HTML/money.wav"
       sound_effect.load()
       sound_effect.play()
     }

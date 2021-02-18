@@ -19,7 +19,7 @@ function startGame(e) {
     playMusic()
     tableInterval = setInterval(selectTable, 15000)
 }
-let tracklist = [{path: "Yummy.m4a"}, {path: "work.m4a"}, {path: "work_from_home.m4a"}, {path: "shake_it_off.m4a"}, {path: "ice_cream.m4a"}, {path: "call_me_maybe.m4a"}, {path: "bad_guy.m4a"}, ]
+let tracklist = [{path: "HTML/Yummy.m4a"}, {path: "HTML/work.m4a"}, {path: "HTML/work_from_home.m4a"}, {path: "HTML/shake_it_off.m4a"}, {path: "HTML/ice_cream.m4a"}, {path: "HTML/call_me_maybe.m4a"}, {path: "HTML/bad_guy.m4a"}, ]
   
 function playMusic() {
   randomNumber = Math.floor(Math.random() * tracklist.length)
@@ -194,7 +194,7 @@ function rectifyPayment(formValues) {
         //     icon: "success",
         //     text: `Congratulations, table #${moneyTable.number} has closed out!`
         // })
-        sound_effect.src = "table_close.wav"
+        sound_effect.src = "HTML/table_close.wav"
         sound_effect.load()
         sound_effect.play()
         addTipsforClosedTable(moneyTable, tableContent)

@@ -29,7 +29,7 @@ function moveWaiter(e) {
       const left = positionToInteger(WAITER.style.left)
   
       if (left > -560) {
-        WAITER.src = "assets/waiter2.png"
+        WAITER.src = "HTML/assets/waiter2.png"
         WAITER.style.left = `${left - 40}px`;
       }
       findOrder()
@@ -43,7 +43,7 @@ function moveWaiter(e) {
       const left = positionToInteger(WAITER.style.left)
   
       if (left < 400) {
-        WAITER.src = "assets/waiter.png"
+        WAITER.src = "HTML/assets/waiter.png"
         WAITER.style.left = `${left + 40}px`;
       }
       findOrder()
@@ -178,13 +178,9 @@ function moveWaiter(e) {
                   text: "Ouch! You got the order wrong!"})
                   addMistakes()
               } else {
-                // Swal.fire({
-                //   icon: "success",
-                //   text: "Order Fulfilled!"})
                 let tableOrderFilled = document.getElementById(`table-${thisTableOrder.table}-content`).firstChild
                 displayOrderToTable(thisTableOrder, tableOrderFilled)
-                debugger
-                sound_effect.src = "yaass.m4a"
+                sound_effect.src = "HTML/yaass.m4a"
                 sound_effect.load()
                 sound_effect.volume = .5
                 sound_effect.play()
