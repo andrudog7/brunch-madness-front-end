@@ -21,8 +21,8 @@ https://andrudog7.github.io/brunch_madness/.  It is recommended you use Google C
 SUPPORT:
 Contact Andrew at waverider826@yahoo.com for support.
 
-Authors and Acknowledgement
-Author - Andrew Smoker
+Authors and Acknowledgement:
+Author - Andrew Smoker,
 Styling - Andrew Franco
 
 
