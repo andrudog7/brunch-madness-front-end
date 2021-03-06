@@ -13,7 +13,9 @@ class Order {
             let count = this.items.filter(orderItem => orderItem === item).length
             displayOrderContent += `${count} ${item.name}, `
         })
-          return displayOrderContent.split(",").splice(0, displayOrderContent.split(",").length - 1)
+          return displayOrderContent.split(",").splice(0, displayOrderContent.split(",").length - 1).sort(function (a, b) {
+              b.toLowerCase - a.toLowerCase
+          })
     }
     static tableLastOrder(table) {
         let tableOrders1 = Order.all.filter(e => e.table === table)

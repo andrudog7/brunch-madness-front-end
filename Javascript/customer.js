@@ -70,7 +70,7 @@ function orderMoreorRequestCheck(tableText) {
               if (tableContent.innerText === "✍️") {
                 Swal.fire({
                   icon: "error",
-                  text: `Ooops! You didn't deliver the check to table #${table} fast enough!`
+                  text: `Ooops! You didn't deliver the check to table ${table} fast enough!`
               })
               addMistakes()
               }

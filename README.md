@@ -15,8 +15,8 @@ Score: $1 tip for every correct order plus 20% tips for every closed table.
 
 ACCESS:
 
-The backend for this game is hosted on Heroku and the front end is available at 
-brunchmadness.github.io/HTML.  It is recommended you use Google Chrome as the browser to access the website in order to play.
+The backend for this game is hosted on Heroku (github link: https://github.com/andrudog7/brunch-madness-back-end) and the front end is available to play by visiting 
+https://andrudog7.github.io/brunch_madness/.  It is recommended you use Google Chrome as the browser to access the website in order to play.
 
 SUPPORT:
 Contact Andrew at waverider826@yahoo.com for support.
@@ -29,7 +29,7 @@ Styling - Andrew Franco
 Contributing
 This project is intended to be a welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/andrudog7/sinatra_race_tracker. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/andrudog7/brunch_madness. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the code of conduct.
 
 License
 The gem is available as open source under the terms of the MIT License.
