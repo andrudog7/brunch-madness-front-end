@@ -12,6 +12,8 @@ When ✍️, 💵, or 💳 appear at a table, run to the register to either deli
 
 Score: $1 tip for every correct order plus 20% tips for every closed table.
 
+Demo Video: https://www.youtube.com/watch?v=zTKAwrfdwOw&t=3s
+
 
 ACCESS:
 
