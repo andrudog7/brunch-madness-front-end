@@ -1,6 +1,5 @@
 const submitBtn = document.getElementById('submit-btn')
 const usernameInput = document.getElementById('username')
-submitBtn.addEventListener('click', getUserData)
 let currentUser = ""
 let currentUserId
 let finalMin 

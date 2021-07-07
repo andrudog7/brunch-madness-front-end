@@ -32,6 +32,10 @@ function displayHighScores(highScores) {
         li.append(p1)
         li.append(p2)
         ol.append(li)
+        const submitBtn = document.getElementById('submit-btn')
+        submitBtn.style.display = "initial"
+        submitBtn.style.marginTop = "15px"
+        submitBtn.addEventListener('click', getUserData)
     })
 }
 
